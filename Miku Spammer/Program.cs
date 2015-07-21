@@ -45,7 +45,7 @@
                 .SetValue(new KeyBind(32, KeyBindType.Press));
             Config.SubMenu("Chat")
                 .AddItem(new MenuItem("ChatType", "Who are you?"))
-                .SetValue(new StringList(new[] {"Radi", "Royals", "Miku", "Killer", "Tim", "Sweden", "Taco", "Eldiath", "Emenike", "Finn", "Oxide", "LostIt", "Broly"}, 0));
+                .SetValue(new StringList(new[] {"Radi", "Royals", "Miku", "Killer", "Tim", "Sweden", "Taco", "Eldiath", "Emenike", "Finn", "Oxide", "LostIt", "Broly", "Ian", "Nathan", "Tahm", "Alfie"}, 0));
 
             Config.AddToMainMenu();
 
@@ -156,7 +156,26 @@
             {
                 Game.Say("/all :thugdoge: never forget <3");
             }
-
+                if (Config.Item("ChatType").GetValue<StringList>().SelectedValue == "Ian")
+            {
+                Game.Say("/all Raise Your Dongers");
+            }
+                if (Config.Item("ChatType").GetValue<StringList>().SelectedValue == "Nathan")
+                {
+                    Game.Say("Get Jingle Jangled");
+                }
+                if (Config.Item("ChatType").GetValue<StringList>().SelectedValue == "Tahm")
+                {
+                    Game.Say("Tahm kench is cancer");
+                }
+                if (Config.Item("ChatType").GetValue<StringList>().SelectedValue == "Alfie")
+                {
+                    Game.Say("Ermagawd that's so op™");
+                }
+                if (Config.Item("ChatType").GetValue<StringList>().SelectedValue == "Rhys")
+                {
+                    Game.Say("Can I touch your nipples");
+                }
 
         }
     }

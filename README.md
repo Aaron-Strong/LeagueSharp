@@ -1,1 +1,1 @@
-Just fixing compile errors in good scripts atm
+Just a dump of scripts I've played around with.

@@ -1,0 +1,12 @@
+C:\Users\Aaron\Documents\EmoteSpammer\bin\Release\MikuSpammer.exe.config
+C:\Users\Aaron\Documents\EmoteSpammer\bin\Release\MikuSpammer.exe
+C:\Users\Aaron\Documents\EmoteSpammer\bin\Release\MikuSpammer.pdb
+C:\Users\Aaron\Documents\EmoteSpammer\bin\Release\LeagueSharp.Common.dll
+C:\Users\Aaron\Documents\EmoteSpammer\bin\Release\LeagueSharp.dll
+C:\Users\Aaron\Documents\EmoteSpammer\bin\Release\SharpDX.dll
+C:\Users\Aaron\Documents\EmoteSpammer\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\Aaron\Documents\EmoteSpammer\bin\Release\clipper_library.dll
+C:\Users\Aaron\Documents\EmoteSpammer\bin\Release\LeagueSharp.Sandbox.dll
+C:\Users\Aaron\Documents\EmoteSpammer\bin\Release\LeagueSharp.xml
+C:\Users\Aaron\Documents\EmoteSpammer\obj\Release\MikuSpammer.exe
+C:\Users\Aaron\Documents\EmoteSpammer\obj\Release\MikuSpammer.pdb

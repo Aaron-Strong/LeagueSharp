@@ -36,38 +36,38 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BehaviorSharp">
-      <HintPath>E:\Users\Aaron\Documents\LeagueSharp\System\BehaviorSharp.dll</HintPath>
+      <HintPath>C:\Users\Aaron\Downloads\LeagueSharp\System\BehaviorSharp.dll</HintPath>
     </Reference>
     <Reference Include="clipper_library">
-      <HintPath>E:\Users\Aaron\Documents\LeagueSharp\System\clipper_library.dll</HintPath>
+      <HintPath>C:\Users\Aaron\Downloads\LeagueSharp\System\clipper_library.dll</HintPath>
     </Reference>
     <Reference Include="LeagueSharp">
-      <HintPath>E:\Users\Aaron\Documents\LeagueSharp\System\LeagueSharp.dll</HintPath>
+      <HintPath>C:\Users\Aaron\Downloads\LeagueSharp\System\LeagueSharp.dll</HintPath>
     </Reference>
     <Reference Include="LeagueSharp.Common">
-      <HintPath>E:\Users\Aaron\Documents\LeagueSharp\System\LeagueSharp.Common.dll</HintPath>
+      <HintPath>C:\Users\Aaron\Downloads\LeagueSharp\System\LeagueSharp.Common.dll</HintPath>
     </Reference>
     <Reference Include="LeagueSharp.Sandbox">
-      <HintPath>E:\Users\Aaron\Documents\LeagueSharp\System\LeagueSharp.Sandbox.dll</HintPath>
+      <HintPath>C:\Users\Aaron\Downloads\LeagueSharp\System\LeagueSharp.Sandbox.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
       <HintPath>C:\Users\CoreyJames\Desktop\LeagueSharp\System\SharpDX.dll</HintPath>
-      <HintPath>E:\Users\Aaron\Documents\LeagueSharp\System\SharpDX.dll</HintPath>
+      <HintPath>C:\Users\Aaron\Downloads\LeagueSharp\System\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="LeagueSharp">
-      <HintPath>E:\Users\Aaron\Documents\LeagueSharp\System\LeagueSharp.dll</HintPath>
+      <HintPath>C:\Users\Aaron\Downloads\LeagueSharp\System\LeagueSharp.dll</HintPath>
     </Reference>
     <Reference Include="LeagueSharp.Common">
-      <HintPath>E:\Users\Aaron\Documents\LeagueSharp\System\LeagueSharp.Common.dll</HintPath>
+      <HintPath>C:\Users\Aaron\Downloads\LeagueSharp\System\LeagueSharp.Common.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>E:\Users\Aaron\Documents\LeagueSharp\System\SharpDX.dll</HintPath>
+      <HintPath>C:\Users\Aaron\Downloads\LeagueSharp\System\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct3D9">
-      <HintPath>E:\Users\Aaron\Documents\LeagueSharp\System\SharpDX.Direct3D9.dll</HintPath>
+      <HintPath>C:\Users\Aaron\Downloads\LeagueSharp\System\SharpDX.Direct3D9.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.XInput">
-      <HintPath>E:\Users\Aaron\Documents\LeagueSharp\System\SharpDX.XInput.dll</HintPath>
+      <HintPath>C:\Users\Aaron\Downloads\LeagueSharp\System\SharpDX.XInput.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

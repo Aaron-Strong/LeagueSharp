@@ -1,0 +1,13 @@
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\obj\Release\MikuSpammer.csprojResolveAssemblyReference.cache
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\bin\Release\MikuSpammer.exe.config
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\bin\Release\MikuSpammer.exe
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\bin\Release\MikuSpammer.pdb
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\bin\Release\LeagueSharp.Common.dll
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\bin\Release\LeagueSharp.dll
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\bin\Release\SharpDX.dll
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\bin\Release\clipper_library.dll
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\bin\Release\LeagueSharp.Sandbox.dll
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\bin\Release\LeagueSharp.xml
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\obj\Release\MikuSpammer.exe
+C:\Users\Aaron\Documents\LeagueSharp\Miku Spammer\obj\Release\MikuSpammer.pdb

@@ -1,14 +1,16 @@
 ﻿//MikuSpammer :wub:
-namespace UniversalSpammerRebornAndresurrected
-{
-    using System;
-    using LeagueSharp;
-    using LeagueSharp.Common;
 
+using System;
+using LeagueSharp;
+using LeagueSharp.Common;
+
+namespace MikuSpammer
+{
     internal class Program
     {
         private static Menu Config;
         private static string all = " ";
+
         private static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
@@ -44,7 +46,7 @@ namespace UniversalSpammerRebornAndresurrected
                         new[]
                         {
                             "Radi", "Royals", "Miku", "Killer", "Tim", "Sweden", "Taco", "Eldiath", "Emenike", "Finn",
-                            "Oxide", "LostIt", "Broly", //"Ian", "Nathan", "Tahm", "Alfie", "Rhys"
+                            "Oxide", "LostIt", "Broly" //"Ian", "Nathan", "Tahm", "Alfie", "Rhys"
                         },
                         0));
 
@@ -55,7 +57,7 @@ namespace UniversalSpammerRebornAndresurrected
 
         private static void OnUpdate(EventArgs args)
         {
-                double tick = 0;
+            double tick = 0;
             tick = TimeSpan.FromSeconds(Environment.TickCount).Minutes;
 
             if (ObjectManager.Player.HasBuff("Recall"))
@@ -77,7 +79,6 @@ namespace UniversalSpammerRebornAndresurrected
                 {
                     Chatspam();
                 }
-
             }
         }
 
@@ -105,14 +106,11 @@ namespace UniversalSpammerRebornAndresurrected
         private static void Chatspam()
         {
             {
-
                 if (Config.Item("Random Shitty Name").GetValue<KeyBind>().Active)
                 {
                     all = "/all ";
                 }
                 else all = "";
-
-
 
 
                 switch (Config.Item("ChatType").GetValue<StringList>().SelectedIndex)
@@ -121,10 +119,10 @@ namespace UniversalSpammerRebornAndresurrected
                         Game.Say(all + "kurwa Radi");
                         break;
                     case 1:
-                        Game.Say(all + "Desu");
+                        Game.Say(all + "suck my balls");
                         break;
                     case 2:
-                        Game.Say(all + "suck my balls");
+                        Game.Say(all + "Desu");
                         break;
                     case 3:
                         Game.Say(all + "I can only play with relax!");

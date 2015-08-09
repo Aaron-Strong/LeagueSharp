@@ -1,7 +1,4 @@
 ﻿//MikuSpammer :wub:
-
-using System.Security.Cryptography.X509Certificates;
-
 namespace UniversalSpammerRebornAndresurrected
 {
     using System;
@@ -11,10 +8,7 @@ namespace UniversalSpammerRebornAndresurrected
     internal class Program
     {
         private static Menu Config;
-        private double tick;
-        private static string test = "test complete";
         private static string all = " ";
-
         private static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;

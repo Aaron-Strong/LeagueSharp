@@ -18,6 +18,7 @@ namespace MikuSpammer
 
         private static void Game_OnGameLoad(EventArgs args)
         {
+
             Config = new Menu("Spammer", "EmoteSpammer", true);
 
             // Emote Spam Menu

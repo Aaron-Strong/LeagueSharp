@@ -1,14 +1,18 @@
 ﻿//MikuSpammer :wub:
 
-using System;
-using LeagueSharp;
-using LeagueSharp.Common;
+using System.Security.Cryptography.X509Certificates;
 
-namespace MikuSpammer
+namespace UniversalSpammerRebornAndresurrected
 {
+    using System;
+    using LeagueSharp;
+    using LeagueSharp.Common;
+
     internal class Program
     {
         private static Menu Config;
+        private double tick;
+        private static string test = "test complete";
         private static string all = " ";
 
         private static void Main(string[] args)
@@ -18,7 +22,6 @@ namespace MikuSpammer
 
         private static void Game_OnGameLoad(EventArgs args)
         {
-
             Config = new Menu("Spammer", "EmoteSpammer", true);
 
             // Emote Spam Menu
@@ -29,8 +32,14 @@ namespace MikuSpammer
             Config.SubMenu("Emotes")
                 .AddItem(new MenuItem("EmoteToggable", "Toggleable Emote"))
                 .SetValue(new KeyBind('h', KeyBindType.Toggle));
-            Config.SubMenu("Emotes").AddItem(new MenuItem("Type", "Which Emote to spam?")).SetValue(new Slider(1, 4, 1));
-            Config.SubMenu("Emotes").AddItem(new MenuItem("kappa", "1 = laugh, 2 = Taunt, 3 = Joke, 4 = Mastery"));
+            Config.SubMenu("Emotes").AddItem(new MenuItem("Type", "Which Emote to spam?")).SetValue(new StringList(new []
+            {
+                "Laugh", "Taunt", "Joke", "Mastery"
+            }
+            ));
+            
+
+            //Config.SubMenu("Emotes").AddItem(new MenuItem("kappa", "1 = laugh, 2 = Taunt, 3 = Joke, 4 = Mastery"));
 
             // Chat Spam Menu
             Config.AddSubMenu(new Menu("Chat", "Chat"));
@@ -38,7 +47,7 @@ namespace MikuSpammer
                 .AddItem(new MenuItem("Press Button", "Press Button"))
                 .SetValue(new KeyBind(32, KeyBindType.Press));
             Config.SubMenu("Chat")
-                .AddItem(new MenuItem("Random Shitty Name", "Random Shitty Name"))
+                .AddItem(new MenuItem("allChat", "All Chat?"))
                 .SetValue(new KeyBind(32, KeyBindType.Toggle));
             Config.SubMenu("Chat")
                 .AddItem(new MenuItem("ChatType", "Who are you?"))
@@ -47,9 +56,9 @@ namespace MikuSpammer
                         new[]
                         {
                             "Radi", "Royals", "Miku", "Killer", "Tim", "Sweden", "Taco", "Eldiath", "Emenike", "Finn",
-                            "Oxide", "LostIt", "Broly" //"Ian", "Nathan", "Tahm", "Alfie", "Rhys"
-                        },
-                        0));
+                            "Oxide", "LostIt", "Broly", //"Ian", "Nathan", "Tahm", "Alfie", "Rhys"
+                        }
+                        ));
 
             Config.AddToMainMenu();
 
@@ -58,7 +67,7 @@ namespace MikuSpammer
 
         private static void OnUpdate(EventArgs args)
         {
-            double tick = 0;
+                double tick = 0;
             tick = TimeSpan.FromSeconds(Environment.TickCount).Minutes;
 
             if (ObjectManager.Player.HasBuff("Recall"))
@@ -80,6 +89,7 @@ namespace MikuSpammer
                 {
                     Chatspam();
                 }
+
             }
         }
 
@@ -107,11 +117,14 @@ namespace MikuSpammer
         private static void Chatspam()
         {
             {
-                if (Config.Item("Random Shitty Name").GetValue<KeyBind>().Active)
+
+                if (Config.Item("allChat").GetValue<KeyBind>().Active)
                 {
                     all = "/all ";
                 }
                 else all = "";
+
+
 
 
                 switch (Config.Item("ChatType").GetValue<StringList>().SelectedIndex)
@@ -120,10 +133,10 @@ namespace MikuSpammer
                         Game.Say(all + "kurwa Radi");
                         break;
                     case 1:
-                        Game.Say(all + "suck my balls");
+                        Game.Say(all + "Desu");
                         break;
                     case 2:
-                        Game.Say(all + "Desu");
+                        Game.Say(all + "suck my balls");
                         break;
                     case 3:
                         Game.Say(all + "I can only play with relax!");

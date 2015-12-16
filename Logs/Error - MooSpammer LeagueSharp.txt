@@ -1,0 +1,26 @@
+Build started 16/12/2015 00:08:47.
+__________________________________________________
+Project "C:\Users\Aaron\Documents\Visual Studio 2015\Projects\MooSpammer LeagueSharp\MooSpammer LeagueSharp\MooSpammer LeagueSharp.csproj" (default targets):
+
+Target PrepareForBuild:
+    Creating directory "obj\Release\".
+Target GenerateBindingRedirects:
+    No suggested binding redirects from ResolveAssemblyReferences.
+Target GenerateTargetFrameworkMonikerAttribute:
+  Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+Target CoreCompile:
+    C:\Program Files (x86)\MSBuild\14.0\bin\csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:x86 /errorreport:prompt /warn:4 /define:TRACE /highentropyva+ /reference:C:\Users\Aaron\Documents\LeagueSharp\System\LeagueSharp.Common.dll /reference:C:\Users\Aaron\Documents\LeagueSharp\System\LeagueSharp.dll /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\mscorlib.dll" /reference:C:\Users\Aaron\Documents\LeagueSharp\System\SharpDX.dll /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Net.Http.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Xml.Linq.dll" /debug:pdbonly /filealign:512 /optimize+ /out:"obj\Release\MooSpammer LeagueSharp.exe" /ruleset:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\\Rule Sets\MinimumRecommendedRules.ruleset" /subsystemversion:6.00 /target:exe /utf8output Program.cs Properties\AssemblyInfo.cs "C:\Users\Aaron\AppData\Local\Temp\.NETFramework,Version=v4.5.2.AssemblyAttributes.cs"
+    Program.cs(52,30): error CS1056: Unexpected character '$'
+    Program.cs(52,31): error CS1056: Unexpected character '`'
+Done building target "CoreCompile" in project "MooSpammer LeagueSharp.csproj" -- FAILED.
+
+Done building project "MooSpammer LeagueSharp.csproj" -- FAILED.
+
+Build FAILED.
+
+Program.cs(52,30): error CS1056: Unexpected character '$'
+Program.cs(52,31): error CS1056: Unexpected character '`'
+    0 Warning(s)
+    2 Error(s)
+
+Time Elapsed 00:00:00.02

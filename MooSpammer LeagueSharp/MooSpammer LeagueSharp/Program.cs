@@ -27,25 +27,34 @@ namespace MooSpammer_LeagueSharp
         {
             string command = args.Input.Split(' ').First();
             string text = args.Input.Substring(args.Input.IndexOf(' '));
-            
-            if (args.Input.StartsWith("/"))
-            {
-                args.Process = false;
-            }
             Console.WriteLine(args.Input);
             Console.WriteLine(text);
+
              switch (command)
             {
 
                 case ".Cow":
-                    Game.Say(@". _________________");
-                    Game.Say($"( {text} )");
-                    Game.Say(@". -----------------");
-                    Game.Say(@".        o   ^__^");
-                    Game.Say(@".         o  (oO)\_______");
-                    Game.Say(@".            (__)\       )\/\");
-                    Game.Say(@".             U  ||----w |");
-                    Game.Say(@".                ||     ||");
+                    Game.Say(@"/all . _________________");
+                    Game.Say($"/all ( {text} )");
+                    Game.Say(@"/all . -----------------");
+                    Game.Say(@"/all .        o   ^__^");
+                    Game.Say(@"/all .         o  (oO)\_______");
+                    Game.Say(@"/all .            (__)\       )\/\");
+                    Game.Say(@"/all .             U  ||----w |");
+                    Game.Say(@"/all .                ||     ||");
+                    break;
+                case ".Dalek":
+                    Game.Say(@"/all .              ___");
+                    Game.Say(@"/all .      D>=G==='   '.");
+                    Game.Say(@"/all .            |======|");
+                    Game.Say(@"/all .            |======|");
+                    Game.Say(@"/all .        )--/]IIIIII]");
+                    Game.Say(@"/all .           |_______|");
+                    Game.Say(@"/all .           C O O O D");
+                    Game.Say(@"/all .          C O  O  O D");
+                    Game.Say(@"/all .         C  O  O  O  D");
+                    Game.Say(@"/all .         C__O__O__O__D");
+                    Game.Say(@"/all .        [_____________]");
                     break;
                 default:
                     return;

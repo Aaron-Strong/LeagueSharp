@@ -56,6 +56,19 @@ namespace MooSpammer_LeagueSharp
                     Game.Say(@"/all .         C__O__O__O__D");
                     Game.Say(@"/all .        [_____________]");
                     break;
+                case ".Milk":
+                    Game.Say($"/all ( {text}");
+                    Game.Say(@"/all . o   /////////////\\\\");
+                    Game.Say(@"/all .  o /___________/___/|");
+                    Game.Say(@"/all .    |          |     |");
+                    Game.Say(@"/all .    | ==\\ /== |     |");
+                    Game.Say(@"/all .    |   O   O  | \\ \\ |");
+                    Game.Say(@"/all .    |     <    |  \\ \\|");
+                    Game.Say(@"/all .   /|          |   \\ \\");
+                    Game.Say(@"/all .  / |  \\_____/ |   / /");
+                    Game.Say(@"/all . / /|          |  / /|");
+                    Game.Say(@"/all ./||\\---------- | /||\\/");
+                    break;
                 default:
                     return;
             }

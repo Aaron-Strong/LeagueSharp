@@ -44,10 +44,10 @@ namespace MooSpammer_LeagueSharp
                     Game.Say(@"/all .                ||     ||");
                     break;
                 case ".Dalek":
-                    Game.Say(@"/all .              ___");
-                    Game.Say(@"/all .      D>=G==='   '.");
+                    Game.Say($"/all .( {text} )");
+                    Game.Say(@"/all .   o   D>=G==='   '.");
                     Game.Say(@"/all .            |======|");
-                    Game.Say(@"/all .            |======|");
+                    Game.Say(@"/all .     o      |======|");
                     Game.Say(@"/all .        )--/]IIIIII]");
                     Game.Say(@"/all .           |_______|");
                     Game.Say(@"/all .           C O O O D");

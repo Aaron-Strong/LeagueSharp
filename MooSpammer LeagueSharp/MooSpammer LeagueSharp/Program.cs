@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using LeagueSharp;
 using LeagueSharp.Common;
+using System.Media;
+using System.Threading;
+
 namespace MooSpammer_LeagueSharp
 {
     internal class Program
     {
-
+        private static readonly SoundPlayer EasterEgg = new SoundPlayer(Properties.Resource1.EasterEgg);
         static void Main(string[] args)
         {
 
@@ -68,6 +71,9 @@ namespace MooSpammer_LeagueSharp
                     Game.Say(@"/all .  / |  \\_____/ |   / /");
                     Game.Say(@"/all . / /|          |  / /|");
                     Game.Say(@"/all ./||\\---------- | /||\\/");
+                    break;
+                case ".memes123":
+                    EasterEgg.Play();
                     break;
                 default:
                     return;

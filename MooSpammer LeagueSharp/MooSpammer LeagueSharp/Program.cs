@@ -32,10 +32,6 @@ namespace MooSpammer_LeagueSharp
             string text = args.Input.Substring(args.Input.IndexOf(' '));
             Console.WriteLine(args.Input);
             Console.WriteLine(text);
-            if (command == null)
-            {
-                Game.PrintChat("<font color='#00FFFF'>Add a spacebar dippy</font>")
-            }
              switch (command)
             {
 
@@ -89,6 +85,15 @@ namespace MooSpammer_LeagueSharp
                     Utility.DelayAction.Add(10000, () => Game.Say($"/all www.gfuel.com"));
                     Utility.DelayAction.Add(11000, () => Game.Say($"/all And incase you get banned we also sell accounts at"));
                     Utility.DelayAction.Add(12000, () => Game.Say($"/all www.moo.tokyo"));
+                    break;
+                case ".Twitch":
+                    Game.Say($"/all Be sure to watch my stream at");
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all http://twitch.tv/{text}"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all We stream high quality league of legends"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all We have chalenger mechanics"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all And a tonne of cool marcos"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all I hope you will come visit us"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all Love from {text}"));
                     break;
                 default:
                     return;

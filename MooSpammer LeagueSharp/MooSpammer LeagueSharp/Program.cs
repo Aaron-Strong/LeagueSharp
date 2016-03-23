@@ -34,7 +34,7 @@ namespace MooSpammer_LeagueSharp
             Console.WriteLine(text);
             if (command == null)
             {
-                Game.PrintChat("<font color='#00FFFF'>Add a spacebar dippy")
+                Game.PrintChat("<font color='#00FFFF'>Add a spacebar dippy</font>")
             }
              switch (command)
             {

@@ -88,7 +88,7 @@ namespace MooSpammer_LeagueSharp
                     break;
                 case ".Twitch":
                     Game.Say($"/all Be sure to watch my stream at");
-                    Utility.DelayAction.Add(1000, () => Game.Say($"/all https://www.youtube.com/aaronspong/live"));
+                    Utility.DelayAction.Add(1000, () => Game.Say($"/all http://twitch.tv/{text}"));
                     Utility.DelayAction.Add(2000, () => Game.Say($"/all We stream high quality league of legends"));
                     Utility.DelayAction.Add(3000, () => Game.Say($"/all We have chalenger mechanics"));
                     Utility.DelayAction.Add(4000, () => Game.Say($"/all And a tonne of cool marcos"));

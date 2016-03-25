@@ -244,7 +244,8 @@ namespace MooSpammer_LeagueSharp
                     Utility.DelayAction.Add(1000, () => Game.Say($"/all I suggest you building Stinger."));
                     Utility.DelayAction.Add(2000, () => Game.Say($"/all I suggest you building Stinger."));
                     Utility.DelayAction.Add(3000, () => Game.Say($"/all I suggest you building Stinger."));
-
+                break;
+                
                 default:
                     return;
             }

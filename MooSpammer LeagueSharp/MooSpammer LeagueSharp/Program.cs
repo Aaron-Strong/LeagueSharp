@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,38 +39,41 @@ namespace MooSpammer_LeagueSharp
                     Game.Say(@"/all . _________________");
                     Game.Say($"/all ( {text} )");
                     Game.Say(@"/all . -----------------");
-                    Game.Say(@"/all .        o   ^__^");
-                    Game.Say(@"/all .         o  (oO)\_______");
-                    Game.Say(@"/all .            (__)\       )\/\");
-                    Game.Say(@"/all .             U  ||----w |");
-                    Game.Say(@"/all .                ||     ||");
+                    Game.Say(@"/all ........o..^__^");
+                    Game.Say(@"/all ..........o..(oO)\_______");
+                    Game.Say(@"/all .............(__)\ ######)\/\");
+                    Game.Say(@"/all ..............U  ||----w |");
+                    Game.Say(@"/all .................||.....||");
                     break;
+
                 case ".Dalek":
                     Game.Say($"/all .( {text} )");
-                    Game.Say(@"/all .   o   D>=G==='   '.");
-                    Game.Say(@"/all .            |======|");
-                    Game.Say(@"/all .     o      |======|");
-                    Game.Say(@"/all .        )--/]IIIIII]");
-                    Game.Say(@"/all .           |_______|");
-                    Game.Say(@"/all .           C O O O D");
-                    Game.Say(@"/all .          C O  O  O D");
-                    Game.Say(@"/all .         C  O  O  O  D");
-                    Game.Say(@"/all .         C__O__O__O__D");
-                    Game.Say(@"/all .        [_____________]");
+                    Game.Say(@"/all ....o...D>=G==='   '.");
+                    Game.Say(@"/all .............|======|");
+                    Game.Say(@"/all ......o......|======|");
+                    Game.Say(@"/all .........)--/]IIIIII]");
+                    Game.Say(@"/all ............|_______|");
+                    Game.Say(@"/all ............C O O O D");
+                    Game.Say(@"/all ...........C O  O  O D");
+                    Game.Say(@"/all ..........C  O  O  O  D");
+                    Game.Say(@"/all ..........C__O__O__O__D");
+                    Game.Say(@"/all .........[_____________]");
                     break;
+
                 case ".Milk":
                     Game.Say($"/all ( {text}");
                     Game.Say(@"/all . o   /////////////\\\\");
                     Game.Say(@"/all .  o /___________/___/|");
-                    Game.Say(@"/all .    |          |     |");
-                    Game.Say(@"/all .    | ==\\ /== |     |");
-                    Game.Say(@"/all .    |   O   O  | \\ \\ |");
-                    Game.Say(@"/all .    |     <    |  \\ \\|");
-                    Game.Say(@"/all .   /|          |   \\ \\");
-                    Game.Say(@"/all .  / |  \\_____/ |   / /");
-                    Game.Say(@"/all . / /|          |  / /|");
-                    Game.Say(@"/all ./||\\---------- | /||\\/");
+                    Game.Say(@"/all .....|##########|");
+                    Game.Say(@"/all .....| ==\\ /== |.....|");
+                    Game.Say(@"/all .....|# O---O # |.\\ \\ |");
+                    Game.Say(@"/all .....|### O ####|...\\ \\|");
+                    Game.Say(@"/all ..../|##########|...\\ \\");
+                    Game.Say(@"/all .../ | \\_____/ |.../ /");
+                    Game.Say(@"/all ../ /|##########|../ /|");
+                    Game.Say(@"/all ./||\\----------|./||\\/");
                     break;
+
                 case ".Lobby":
                     Game.Say($"/all Welcome to {text}'s Modded Lobby");
                     Utility.DelayAction.Add(1000, () => Game.Say($"/all Press L3 for the Mod Menu"));
@@ -86,6 +89,7 @@ namespace MooSpammer_LeagueSharp
                     Utility.DelayAction.Add(11000, () => Game.Say($"/all And incase you get banned we also sell accounts at"));
                     Utility.DelayAction.Add(12000, () => Game.Say($"/all www.moo.tokyo"));
                     break;
+
                 case ".Twitch":
                     Game.Say($"/all Be sure to watch my stream at");
                     Utility.DelayAction.Add(1000, () => Game.Say($"/all http://twitch.tv/{text}"));
@@ -95,8 +99,9 @@ namespace MooSpammer_LeagueSharp
                     Utility.DelayAction.Add(5000, () => Game.Say($"/all I hope you will come visit us"));
                     Utility.DelayAction.Add(6000, () => Game.Say($"/all Love from {text}"));
                     break;
+
+                //https://www.youtube.com/watch?v=8ok-m6UEBig
                 case ".Icy":
-                    //https://www.youtube.com/watch?v=8ok-m6UEBig
                     Utility.DelayAction.Add(1000, () => Game.Say($"/all  Hi guys it's Icy"));
                     Utility.DelayAction.Add(2000, () => Game.Say($"/all I mean it's your boy icy "));
                     Utility.DelayAction.Add(3000, () => Game.Say($"/all back with another video "));
@@ -136,7 +141,7 @@ namespace MooSpammer_LeagueSharp
                     Utility.DelayAction.Add(37000, () => Game.Say($"/all *spacebar noises* "));
                     Utility.DelayAction.Add(38000, () => Game.Say($"/all and this is the C key "));
                     Utility.DelayAction.Add(39000, () => Game.Say($"/all *C key noises* "));
-                    Utility.DelayAction.Add(40000, () => Game.Say($"/all See, there's a different, there's a different pitch. "));
+                    Utility.DelayAction.Add(4000, () => Game.Say($"/all See, there's a different, there's a different pitch. "));
                     Utility.DelayAction.Add(41000, () => Game.Say($"/all The C key has a lower pitch "));
                     Utility.DelayAction.Add(42000, () => Game.Say($"/all *C key noises* "));
                     Utility.DelayAction.Add(43000, () => Game.Say($"/all and the spacebar "));
@@ -168,11 +173,78 @@ namespace MooSpammer_LeagueSharp
                     Utility.DelayAction.Add(68000, () => Game.Say($"/all For inspiring me to do an ASMR video  "));
                     Utility.DelayAction.Add(69000, () => Game.Say($"/all Once again it's been your boy icy have a good night and peace. "));
                     break;
+
+                //https://www.joduska.me/forum/topic/195945-jquery-exposed/?p=1517490
                 case ".jQuery":
                     Utility.DelayAction.Add(1000, () => Game.Say($"/all jQuery is an adorable cutie but remember she is only 15 years old. How can you post your s... picture named by her name ?? "));
                     Utility.DelayAction.Add(2000, () => Game.Say($"/all Well if you're under 18y old, I could agree the fact you need to be medically suived but I will never agree to post those shit ... "));
                     Utility.DelayAction.Add(3000, () => Game.Say($"/all Just stay away, you're probably banned at this moment ... "));
                     break;
+
+                //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518754
+                case ".Detection":
+                    Utility.DelayAction.Add(1000, () => Game.Say($"/all SERVERSIDE DETECTION?"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all SERVERSIDE DETECTION?"));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"/all SERVERSIDE DETECTION?"));
+                    break;
+
+                //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518758
+                case ".Who?":
+                    Utility.DelayAction.Add(1000, () => Game.Say($"/all MIKU DID ALL OF THIS"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all MIKU DID ALL OF THIS"));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"/all MIKU DID ALL OF THIS"));
+                    break;
+
+                //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518759
+                case ".Tilt":
+                    Utility.DelayAction.Add(1000, () => Game.Say($"/all Media tilt me"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all Media tilt me"));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"/all Media tilt me"));
+                    break;
+
+                //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518761
+                case ".Memes":
+                    Utility.DelayAction.Add(1000, () => Game.Say($"/all Memes?:feelsgoodman:"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all Memes?:feelsgoodman:"));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"/all Memes?:feelsgoodman:"));
+                    break;
+
+                //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518763
+                case ".Apes":
+                    Utility.DelayAction.Add(1000, () => Game.Say($"/all Can you  A P E S start trying to play good? This game is boring the S H I T out of me. F U C K Y O U E A T M Y D I C K"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all Can you  A P E S start trying to play good? This game is boring the S H I T out of me. F U C K Y O U E A T M Y D I C K"));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"/all Can you  A P E S start trying to play good? This game is boring the S H I T out of me. F U C K Y O U E A T M Y D I C K"));
+                    break;
+
+                //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518764
+                case ".jQuery2":
+                    Utility.DelayAction.Add(1000, () => Game.Say($"/all I want more .jQuery moo"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all I want more .jQuery moo"));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"/all I want more .jQuery moo"));
+                    break;
+
+                //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518785
+                case ".Degrec":
+                    Utility.DelayAction.Add(1000, () => Game.Say($"/all Hola me nombrë my name is degrec and i use great cracked script"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all Hola me nombrë my name is degrec and i use great cracked script"));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"/all Hola me nombrë my name is degrec and i use great cracked script"));
+                    break;
+
+                //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518787
+                case ".Suck":
+                    Utility.DelayAction.Add(1000, () => Game.Say($"/all jajajajaja"));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all You suck more than a suck machine set on 'suck a lot'"));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"/all I'm the whup, you're the ass."));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"/all Get better, not bitter."));
+                    Utility.DelayAction.Add(4000, () => Game.Say($"/all Want a tissue? ;)"));
+                    break;
+
+                //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518797
+                case ".Media":
+                    Utility.DelayAction.Add(1000, () => Game.Say($"/all I suggest you building Stinger."));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all I suggest you building Stinger."));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"/all I suggest you building Stinger."));
+
                 default:
                     return;
             }

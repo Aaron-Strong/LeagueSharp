@@ -136,7 +136,7 @@ namespace MooSpammer_LeagueSharp
                     Utility.DelayAction.Add(37000, () => Game.Say($"/all *spacebar noises* "));
                     Utility.DelayAction.Add(38000, () => Game.Say($"/all and this is the C key "));
                     Utility.DelayAction.Add(39000, () => Game.Say($"/all *C key noises* "));
-                    Utility.DelayAction.Add(4000, () => Game.Say($"/all See, there's a different, there's a different pitch. "));
+                    Utility.DelayAction.Add(40000, () => Game.Say($"/all See, there's a different, there's a different pitch. "));
                     Utility.DelayAction.Add(41000, () => Game.Say($"/all The C key has a lower pitch "));
                     Utility.DelayAction.Add(42000, () => Game.Say($"/all *C key noises* "));
                     Utility.DelayAction.Add(43000, () => Game.Say($"/all and the spacebar "));

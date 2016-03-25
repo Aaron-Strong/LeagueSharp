@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -96,7 +96,7 @@ namespace MooSpammer_LeagueSharp
                     Utility.DelayAction.Add(6000, () => Game.Say($"/all Love from {text}"));
                     break;
                 case ".Icy":
-                    //
+                    //https://www.youtube.com/watch?v=8ok-m6UEBig
                     Utility.DelayAction.Add(1000, () => Game.Say($"/all  Hi guys it's Icy"));
                     Utility.DelayAction.Add(2000, () => Game.Say($"/all I mean it's your boy icy "));
                     Utility.DelayAction.Add(3000, () => Game.Say($"/all back with another video "));
@@ -167,12 +167,11 @@ namespace MooSpammer_LeagueSharp
                     Utility.DelayAction.Add(67000, () => Game.Say($"/all for uhh, what's the word again... "));
                     Utility.DelayAction.Add(68000, () => Game.Say($"/all For inspiring me to do an ASMR video  "));
                     Utility.DelayAction.Add(69000, () => Game.Say($"/all Once again it's been your boy icy have a good night and peace. "));
-
                     break;
-                case "jQuery":
+                case ".jQuery":
                     Utility.DelayAction.Add(1000, () => Game.Say($"/all jQuery is an adorable cutie but remember she is only 15 years old. How can you post your s... picture named by her name ?? "));
-                    Utility.DelayAction.Add(1000, () => Game.Say($"/all Well if you're under 18y old, I could agree the fact you need to be medically suived but I will never agree to post those shjt ... "));
-                    Utility.DelayAction.Add(1000, () => Game.Say($"/all Just stay away, you're probably banned at this moment ... "));
+                    Utility.DelayAction.Add(2000, () => Game.Say($"/all Well if you're under 18y old, I could agree the fact you need to be medically suived but I will never agree to post those shit ... "));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"/all Just stay away, you're probably banned at this moment ... "));
                     break;
                 default:
                     return;

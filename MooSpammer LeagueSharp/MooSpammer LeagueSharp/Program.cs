@@ -77,7 +77,7 @@ namespace MooSpammer_LeagueSharp
                     new StringList(
                         new[]
                         {
-                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory"
+                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory", "PlsStop"
                         }
                         ));
 
@@ -139,6 +139,9 @@ namespace MooSpammer_LeagueSharp
                         break;
                     case 10:
                         Game.Say($"{all} I would clap at my brain after pulling off such a masterpiece of a phrase, if it wasn't shit.");
+                        break;
+                    case 11:
+                        Game.Say($"{all} Guys can you please not spam the chat. My mom bought me this new laptop and it gets really hot when the chat is being spamed. Now my leg is starting to hurt because it is getting so hot. Please, if you don’t want me to get burned, then dont spam the chat");
                         break;
                     default:
                         break;

@@ -77,7 +77,7 @@ namespace MooSpammer_LeagueSharp
                     new StringList(
                         new[]
                         {
-                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media"  
+                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory"
                         }
                         ));
 
@@ -102,40 +102,43 @@ namespace MooSpammer_LeagueSharp
                 switch (Config.Item("ChatType").GetValue<StringList>().SelectedIndex)
                 {
                     case 0:
-                        Game.Say($"/all jQuery is an adorable cutie but remember she is only 15 years old. How can you post your s... picture named by her name ?? ");
-                        Game.Say($"/all Well if you're under 18y old, I could agree the fact you need to be medically suived but I will never agree to post those shit ... ");
-                        Game.Say($"/all Just stay away, you're probably banned at this moment ... ");
+                        Game.Say($"{all} jQuery is an adorable cutie but remember she is only 15 years old. How can you post your s... picture named by her name ?? ");
+                        Game.Say($"{all} Well if you're under 18y old, I could agree the fact you need to be medically suived but I will never agree to post those shit ... ");
+                        Game.Say($"{all} Just stay away, you're probably banned at this moment ... ");
                         break;
                     case 1:
-                        Game.Say($"/all SERVERSIDE DETECTION?");
+                        Game.Say($"{all} SERVERSIDE DETECTION?");
                         break;
                     case 2:
-                        Game.Say($"/all MIKU DID ALL OF THIS");
+                        Game.Say($"{all} MIKU DID ALL OF THIS");
                         break;
                     case 3:
-                        Game.Say($"/all Media tilt me");
+                        Game.Say($"{all} Media tilt me");
                         break;
                     case 4:
-                        Game.Say($"/all Memes?:feelsgoodman:");
+                        Game.Say($"{all} Memes?:feelsgoodman:");
                         break;
                     case 5:
-                        Game.Say($"/all Can you  A P E S start trying to play good? This game is boring the S H I T out of me. F U C K Y O U E A T M Y D I C K");
+                        Game.Say($"{all} Can you  A P E S start trying to play good? This game is boring the S H I T out of me. F U C K Y O U E A T M Y D I C K");
                         break;
                     case 6:
-                        Game.Say($"/all I want is more .jQuery moo");
+                        Game.Say($"{all} I want is more .jQuery moo");
                         break;
                     case 7:
-                        Game.Say($"/all Hola mi nombre es degrec and I use cracked script");
+                        Game.Say($"{all} Hola mi nombre es degrec and I use cracked script");
                         break;
                     case 8:
-                        Game.Say($"/all jajajajaja");
-                        Game.Say($"/all You suck more than a suck machine set on 'suck a lot'");
-                        Game.Say($"/all I'm the whup, you're the ass.");
-                        Game.Say($"/all Get better, not bitter.");
-                        Game.Say($"/all Want a tissue? ;)");
+                        Game.Say($"{all} jajajajaja");
+                        Game.Say($"{all} You suck more than a suck machine set on 'suck a lot'");
+                        Game.Say($"{all} I'm the whup, you're the ass.");
+                        Game.Say($"{all} Get better, not bitter.");
+                        Game.Say($"{all} Want a tissue? ;)");
                         break;
                     case 9:
-                        Game.Say($"/all I suggest you building Stinger.");
+                        Game.Say($"{all} I suggest you building Stinger.");
+                        break;
+                    case 10:
+                        Game.Say($"{all} I would clap at my brain after pulling off such a masterpiece of a phrase, if it wasn't shit.");
                         break;
                     default:
                         break;

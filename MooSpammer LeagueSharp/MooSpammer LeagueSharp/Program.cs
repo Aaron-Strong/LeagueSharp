@@ -1,6 +1,7 @@
-﻿using LeagueSharp;
+using LeagueSharp;
 using LeagueSharp.Common;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -10,14 +11,18 @@ namespace MooSpammer_LeagueSharp
     {
         private static Menu Config;
         private static string all = " ";
+        public static int CustomCount = 0;
+        public static List<string> SavedSpam = new List<string>();
 
         private static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += game_OnGameLoad;
         }
 
-        private static void game_OnGameLoad(EventArgs args)
+        public static void game_OnGameLoad(EventArgs args)
         {
+            #region menu
+
             Config = new Menu("MooSpammer", "MooSpammer", true);
 
             Config
@@ -71,18 +76,24 @@ namespace MooSpammer_LeagueSharp
                     new StringList(
                         new[]
                         {
-                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory", "PlsStop", "T I L T E D"
+                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory", "PlsStop", "T I L T E D", "Moo", "Royals", ":ro:"
                         }
                         ));
-
+            Config.AddSubMenu(new Menu("CustomSpam", "CustomSpam"));
+            Config.SubMenu("CustomSpam")
+                .AddItem(new MenuItem("Custom Spam Goes Here!", "Custom Spam Goes Here!"));
             Config.AddToMainMenu();
 
-            Game.OnUpdate += OnUpdate;
+            #endregion menu
+
+            Game.OnUpdate += Game_OnGameUpdate;
             Game.OnInput += Game_OnGameInput;
         }
 
-        private static void OnUpdate(EventArgs args)
+        private static void Game_OnGameUpdate(EventArgs args)
         {
+            #region ButtonSpam
+
             if (Config.Item("Press Button").GetValue<KeyBind>().Active)
             {
                 if (Config.Item("allChat").GetValue<KeyBind>().Active)
@@ -151,14 +162,28 @@ namespace MooSpammer_LeagueSharp
                         Game.Say($"{all} T I L T E D");
                         break;
 
+                    case 13:
+                        Game.Say($"{all} Moo");
+                        break;
+
+                    case 14:
+                        Game.Say($"{all} I dunno, something about an eggplant");
+                        break;
+                    case 15:
+                        Game.Say($"{all} :ro:");
+                        break;
                     default:
                         break;
                 }
             }
+
+            #endregion ButtonSpam
         }
 
         private static void Game_OnGameInput(GameInputEventArgs args)
         {
+            #region ChatCommands
+
             string arg = args.Input;
             string text = ("");
             string command = ("");
@@ -185,6 +210,7 @@ namespace MooSpammer_LeagueSharp
 
             {
                 case ".Cow":
+                case ".cow":
                     Game.Say($"{all} ( {text} )");
                     Game.Say(@"{all} ........o....^__^");
                     Game.Say(@"{all} ..........o..(oO)\_______");
@@ -194,6 +220,7 @@ namespace MooSpammer_LeagueSharp
                     break;
 
                 case ".Dalek":
+                case ".dalek":
                     Game.Say($"{all} .( {text} )");
                     Game.Say(@"{all} ....o...D>=G==='   '.");
                     Game.Say(@"{all} .............|======|");
@@ -208,6 +235,7 @@ namespace MooSpammer_LeagueSharp
                     break;
 
                 case ".Milk":
+                case ".milk":
                     Game.Say($"{all} ( {text}");
                     Game.Say(@"{all} . o   /////////////\\\\");
                     Game.Say(@"{all} .  o /___________/___/|");
@@ -222,6 +250,7 @@ namespace MooSpammer_LeagueSharp
                     break;
 
                 case ".Lobby":
+                case ".lobby":
                     Game.Say($"{all} Welcome to {text}'s Modded Lobby");
                     Utility.DelayAction.Add(1000, () => Game.Say($"{all} Press L3 for the Mod Menu"));
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} Press R3 for All Unlocks"));
@@ -238,6 +267,7 @@ namespace MooSpammer_LeagueSharp
                     break;
 
                 case ".Twitch":
+                case ".twitch":
                     Game.Say($"{all} Be sure to watch my stream at");
                     Utility.DelayAction.Add(1000, () => Game.Say($"{all} http://twitch.tv/{text}"));
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} We stream high quality league of legends"));
@@ -249,6 +279,7 @@ namespace MooSpammer_LeagueSharp
 
                 //https://www.youtube.com/watch?v=8ok-m6UEBig
                 case ".Icy":
+                case ".icy":
                     Game.Say($"{all}  Hi guys it's Icy");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} I mean it's your boy icy "));
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} back with another video "));
@@ -323,6 +354,8 @@ namespace MooSpammer_LeagueSharp
 
                 //https://www.joduska.me/forum/topic/195945-jquery-exposed/?p=1517490
                 case ".jQuery":
+                case ".jqeury":
+                case ".Jquery":
                     Game.Say($"{all} jQuery is an adorable cutie but remember she is only 15 years old. How can you post your s... picture named by her name ?? ");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} Well if you're under 18y old, I could agree the fact you need to be medically suived but I will never agree to post those shit ... "));
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} Just stay away, you're probably banned at this moment ... "));
@@ -330,6 +363,7 @@ namespace MooSpammer_LeagueSharp
 
                 //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518754
                 case ".Detection":
+                case ".detection":
                     Game.Say($"{all} SERVERSIDE DETECTION?");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} SERVERSIDE DETECTION?"));
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} SERVERSIDE DETECTION?"));
@@ -337,6 +371,9 @@ namespace MooSpammer_LeagueSharp
 
                 //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518758
                 case ".Who?":
+                case ".Who":
+                case ".who":
+                case ".who?":
                     Game.Say($"{all} MIKU DID ALL OF THIS");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} MIKU DID ALL OF THIS"));
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} MIKU DID ALL OF THIS"));
@@ -344,6 +381,7 @@ namespace MooSpammer_LeagueSharp
 
                 //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518759
                 case ".Tilt":
+                case ".tilt":
                     Game.Say($"{all} Media tilt me");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} Media tilt me"));
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} Media tilt me"));
@@ -351,6 +389,7 @@ namespace MooSpammer_LeagueSharp
 
                 //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518761
                 case ".Memes":
+                case ".memes":
                     Game.Say($"{all} Memes?:feelsgoodman:");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} Memes?:feelsgoodman:"));
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} Memes?:feelsgoodman:"));
@@ -358,6 +397,9 @@ namespace MooSpammer_LeagueSharp
 
                 //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518763
                 case ".Apes":
+                case ".apes":
+                case ".Ape":
+                case ".ape":
                     Game.Say($"{all} Can you  A P E S start trying to play good? This game is boring the S H I T out of me. F U C K Y O U E A T M Y D I C K");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} Can you  A P E S start trying to play good? This game is boring the S H I T out of me. F U C K Y O U E A T M Y D I C K"));
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} Can you  A P E S start trying to play good? This game is boring the S H I T out of me. F U C K Y O U E A T M Y D I C K"));
@@ -365,6 +407,8 @@ namespace MooSpammer_LeagueSharp
 
                 //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518764
                 case ".jQuery2":
+                case ".jqeury2":
+                case ".Jquery2":
                     Game.Say($"{all} I want more .jQuery moo");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} I want more .jQuery moo"));
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} I want more .jQuery moo"));
@@ -372,6 +416,9 @@ namespace MooSpammer_LeagueSharp
 
                 //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518785
                 case ".Degrec":
+                case ".degrec":
+                case ".Mexican":
+                case ".mexican":
                     Game.Say($"{all} Hola me nombrë my name is degrec and i use great cracked script");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} Hola me nombrë my name is degrec and i use great cracked script"));
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} Hola me nombrë my name is degrec and i use great cracked script"));
@@ -379,6 +426,7 @@ namespace MooSpammer_LeagueSharp
 
                 //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518787
                 case ".Suck":
+                case ".suck":
                     Game.Say($"{all} jajajajaja");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} You suck more than a suck machine set on 'suck a lot'"));
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} I'm the whup, you're the ass."));
@@ -388,28 +436,74 @@ namespace MooSpammer_LeagueSharp
 
                 //https://www.joduska.me/forum/topic/196137-gib-me-memes-pls/?p=1518797
                 case ".Media":
+                case ".media":
                     Game.Say($"{all} I suggest you building Stinger.");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} I suggest you building Stinger."));
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} I suggest you building Stinger."));
                     break;
 
+                case ".Moo":
+                case ".moo":
+                    Game.Say($"{all} Moo");
+                    Utility.DelayAction.Add(2000, () => Game.Say($"{all} Moo"));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"{all} Moo"));
+                    break;
+
+                case "Royals":
+                case "royals":
+                case "Connor":
+                case "connor":
+                    Game.Say($"{all} I dunno, something about an eggplant");
+                    Utility.DelayAction.Add(2000, () => Game.Say($"{all} I dunno something about an eggplant"));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"{all} I dunno something about an eggplant"));
+                    break;
+
+                case ".:ro:":
+                    Game.Say($"{all} :ro:");
+                    Utility.DelayAction.Add(2000, () => Game.Say($"{all} :ro:"));
+                    Utility.DelayAction.Add(3000, () => Game.Say($"{all} :ro:"));
+                    break;
+
                 case ".Custom":
-                    Console.WriteLine("Command =" + command);
-                    Console.WriteLine("Text =" + text);
+                case ".custom":
                     customSpam(text);
                     break;
 
                 case ".ClearConsole":
+                case ".clearconsole":
                     Console.Clear();
                     Game.PrintChat("ConsoleCleared");
                     break;
-
+                    /*
+                case ".CustomSave":
+                case ".customsave":
+                case ".CustomAdd":
+                case ".customadd":
+                case ".CustomSpam":
+                case ".customspam":
+                    SaveLogic(text);
+                    break;
+                    */
                 default:
                     return;
             }
+
+            #endregion ChatCommands
         }
 
-        public static void customSpam(string customText)
+        /*private static void SaveLogic(string customText)
+        {
+            string CustomCountString = Convert.ToString(CustomCount);
+            //Config.SubMenu("CustomSpam")
+            //    .AddItem(new MenuItem($"CustomSpam{CustomCountString}", $"[{CustomCountString}] {customText}"))
+            //    .SetValue(new KeyBind('A', KeyBindType.Press));
+            SavedSpam.Add(customText);
+            Game.PrintChat($"<font color='#00ffff'>Succesfully Added CustomSpam No.</font><font color='#00ff80'><b>{CustomCount} : {customText}</b></font>");
+            CustomCount++;
+            
+        }
+        */
+        private static void customSpam(string customText)
         {
             int Lines = 0;
             string spam = "Error";
@@ -421,10 +515,6 @@ namespace MooSpammer_LeagueSharp
                 spam = customText.Substring(0, digitStartIndex);
                 Lines = Convert.ToInt32(customText.Substring(digitStartIndex));
             }
-            //Console.WriteLine($"customText ={customText}");
-            //Console.WriteLine($"Spam ={spam}");
-            //Console.WriteLine($"Lines ={Lines}");
-
             //Thank you https://www.joduska.me/forum/user/98918 for fixing the dumb ass bug <3
             for (var i = Lines - 1; i >= 0; i--)
             {

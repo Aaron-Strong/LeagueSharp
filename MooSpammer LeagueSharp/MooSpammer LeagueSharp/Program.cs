@@ -34,11 +34,10 @@ namespace MooSpammer_LeagueSharp
         //public static IDictionary<string, SpamSave> spamDictionary = new Dictionary<string, SpamSave>();
 
         //probably not the easiest or the right way to do a help command but hey i'm playing with things...
-        public static List<string> helpCommands = new List<string>
-        { ".cow", ".dalek", ".milk", ".lobby [name]", ".twitch [name]", ".icy", ".jquery",
-                ".detection", ".who", ".tilt", ".memes", ".ape", ".jquery2", ".degrec", ".suck",
-                ".media", ".moo", ".royals", ".:ro:", ".teammoo", ".giveaway", ".custom [spam] [lines of spam]",
-                ".clearconsole", ".customsave", ".count", ".help" };
+        public static string help = @".cow, .dalek, .milk, .lobby [name], .twitch [name], .icy, .jquery,
+                .detection, .who, .tilt, .memes, .ape, .jquery2, .degrec, .suck,
+                .media, .moo, .royals, .:ro:, .teammoo, .giveaway, .custom [spam] [lines of spam],
+                .clearconsole, .customsave, .count, .help";
         public static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += game_OnGameLoad;
@@ -101,7 +100,7 @@ namespace MooSpammer_LeagueSharp
                     new StringList(
                         new[]
                         {
-                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory", "PlsStop", "T I L T E D", "Moo", "Royals", ":ro:", "'TeamMoo"
+                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory", "PlsStop", "T I L T E D", "Moo", "Royals", ":ro:", "'TeamMoo", "giveaway"
                         }
                         ));
             Config.AddSubMenu(new Menu("CustomSpam", "CustomSpam"));
@@ -217,6 +216,8 @@ namespace MooSpammer_LeagueSharp
                         Game.Say($"{all} #TeamMoo");
                         AmountSpammed++;
                         break;
+                    case 17:
+                        Game.Say($"{all} 1 MONTH FREE SUBSCRIPTION: https://www.joduska.me/forum/topic/207998-1-month-leaguesharp-subscription-giveaway-anyone-can-join/");
                     default:
                         break;
                 }
@@ -539,7 +540,7 @@ namespace MooSpammer_LeagueSharp
                 case ".help":
                 case ".commands":
                     Game.Say("");
-                    Game.PrintChat(string.Join<string>("  ", helpCommands));
+                    Game.PrintChat();
                     break;
 
                 case ".count":

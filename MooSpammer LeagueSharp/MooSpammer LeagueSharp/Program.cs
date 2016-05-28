@@ -218,6 +218,7 @@ namespace MooSpammer_LeagueSharp
                         break;
                     case 17:
                         Game.Say($"{all} 1 MONTH FREE SUBSCRIPTION: https://www.joduska.me/forum/topic/207998-1-month-leaguesharp-subscription-giveaway-anyone-can-join/");
+                        break;
                     default:
                         break;
                 }
@@ -547,7 +548,7 @@ namespace MooSpammer_LeagueSharp
                 case ".amount":
                     Game.Say("");
                     Game.PrintChat($"You have spammed {AmountSpammed.ToString()} times, wow!");
-                    switch (Random.Next(1, 5))
+                    switch (Random.Next(1, 6))
                     {
                         case 1:
                             wow_hawk.Play();

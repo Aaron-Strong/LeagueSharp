@@ -101,7 +101,7 @@ namespace MooSpammer_LeagueSharp
                     new StringList(
                         new[]
                         {
-                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory", "PlsStop", "T I L T E D", "Moo", "Royals", ":ro:", "'TeamMoo"
+                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory", "PlsStop", "T I L T E D", "Moo", "Royals", ":ro:", "'TeamMoo", "giveaway"
                         }
                         ));
             Config.AddSubMenu(new Menu("CustomSpam", "CustomSpam"));
@@ -216,6 +216,9 @@ namespace MooSpammer_LeagueSharp
                     case 16:
                         Game.Say($"{all} #TeamMoo");
                         AmountSpammed++;
+                        break;
+                    case 17:
+                        Game.Say($"{all} 1 MONTH FREE SUBSCRIPTION: https://www.joduska.me/forum/topic/207998-1-month-leaguesharp-subscription-giveaway-anyone-can-join/");
                         break;
                     default:
                         break;

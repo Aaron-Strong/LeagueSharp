@@ -1,4 +1,4 @@
-﻿using LeagueSharp;
+using LeagueSharp;
 using LeagueSharp.Common;
 using System;
 using System.Collections.Generic;
@@ -138,7 +138,7 @@ namespace MooSpammer_LeagueSharp
 
                     case 1:
                         Game.Say($"{all} SERVERSIDE DETECTION?");
-                        AmountSpammed ++;
+                        AmountSpammed++;
                         break;
 
                     case 2:
@@ -254,7 +254,7 @@ namespace MooSpammer_LeagueSharp
             switch (command.ToLower())
 
             {
-                
+
                 case ".cow":
                     Game.Say($"{all} ( {text} )");
                     Game.Say(@"{all} ........o....^__^");
@@ -265,7 +265,7 @@ namespace MooSpammer_LeagueSharp
                     AmountSpammed += 6;
                     break;
 
-                
+
                 case ".dalek":
                     Game.Say($"{all} .( {text} )");
                     Game.Say(@"{all} ....o...D>=G==='   '.");
@@ -281,7 +281,7 @@ namespace MooSpammer_LeagueSharp
                     AmountSpammed += 11;
                     break;
 
-                
+
                 case ".milk":
                     Game.Say($"{all} ( {text}");
                     Game.Say(@"{all} . o   /////////////\\\\");
@@ -297,7 +297,7 @@ namespace MooSpammer_LeagueSharp
                     AmountSpammed += 11;
                     break;
 
-                
+
                 case ".lobby":
                     Game.Say($"{all} Welcome to {text}'s Modded Lobby");
                     Utility.DelayAction.Add(1000, () => Game.Say($"{all} Press L3 for the Mod Menu"));
@@ -315,7 +315,7 @@ namespace MooSpammer_LeagueSharp
                     AmountSpammed += 13;
                     break;
 
-                
+
                 case ".twitch":
                     Game.Say($"{all} Be sure to watch my stream at");
                     Utility.DelayAction.Add(1000, () => Game.Say($"{all} http://twitch.tv/{text}"));
@@ -327,7 +327,7 @@ namespace MooSpammer_LeagueSharp
                     break;
 
                 //https://www.youtube.com/watch?v=8ok-m6UEBig
-                
+
                 case ".icy":
                     Game.Say($"{all}  Hi guys it's Icy");
                     Utility.DelayAction.Add(2000, () => Game.Say($"{all} I mean it's your boy icy "));
@@ -546,7 +546,7 @@ namespace MooSpammer_LeagueSharp
                 case ".amount":
                     Game.Say("");
                     Game.PrintChat($"You have spammed {AmountSpammed.ToString()} times, wow!");
-                    switch (Random.Next(1,5))
+                    switch (Random.Next(1, 5))
                     {
                         case 1:
                             wow_hawk.Play();
@@ -566,14 +566,14 @@ namespace MooSpammer_LeagueSharp
                         default:
                             break;
                     }
-                    break;                
+                    break;
                 default:
                     if (command.IndexOf('.') == 0)
-                    { 
-                    Game.Say("");
-                    Game.PrintChat($"Command {command.ToLower()} not found, maybe you spelt it wrong?");
-                    Game.PrintChat($"Use .help for a list of commands!");
-                    return;
+                    {
+                        Game.Say("");
+                        Game.PrintChat($"Command {command.ToLower()} not found, maybe you spelt it wrong?");
+                        Game.PrintChat($"Use .help for a list of commands!");
+                        return;
                     }
                     else Game.Say(args.Input);
                     return;
@@ -583,28 +583,28 @@ namespace MooSpammer_LeagueSharp
         }
 
 
-/*work in progress
-        private static void SaveLogic(string customText)
-        {
-            //GetSpam
-            string spam = customText;
-            /*Match regexMatch = Regex.Match(customText, "\\d");
+        /*work in progress
+                private static void SaveLogic(string customText)
+                {
+                    //GetSpam
+                    string spam = customText;
+                    /*Match regexMatch = Regex.Match(customText, "\\d");
 
-            if (regexMatch.Success)
-            {
-                int digitStartIndex = regexMatch.Index;
-                spam = customText.Substring(0, digitStartIndex);
-                spamDictionary[customText] = new SpamSave { spamText = spam };
-                Game.PrintChat($"Spam '{spam}' saved at menu positon {spamDictionary[customText].position}");
-            }
-            else Game.PrintChat("Something Went Wrong, Fuck!");
-        }
-        *//*
-            spamDictionary[customText] = new SpamSave { spamText = spam };
-            Game.PrintChat($"Spam '{spam}' saved at menu positon {spamDictionary[customText].position}");
-        }
+                    if (regexMatch.Success)
+                    {
+                        int digitStartIndex = regexMatch.Index;
+                        spam = customText.Substring(0, digitStartIndex);
+                        spamDictionary[customText] = new SpamSave { spamText = spam };
+                        Game.PrintChat($"Spam '{spam}' saved at menu positon {spamDictionary[customText].position}");
+                    }
+                    else Game.PrintChat("Something Went Wrong, Fuck!");
+                }
+                *//*
+                    spamDictionary[customText] = new SpamSave { spamText = spam };
+                    Game.PrintChat($"Spam '{spam}' saved at menu positon {spamDictionary[customText].position}");
+                }
 
-*/
+        */
         private static void customSpam(string customText)
         {
             int Lines = 0;
@@ -623,13 +623,13 @@ namespace MooSpammer_LeagueSharp
                 Game.PrintChat("You forgot to add a number at the end!");
                 return;
             }
-            
+
             //Thank you https://www.joduska.me/forum/user/98918 for fixing the dumb ass bug <3
             for (var i = Lines - 1; i >= 0; i--)
             {
                 Game.Say($"{all} {spam}");
                 Game.Say("");
-                AmountSpammed ++;
+                AmountSpammed++;
             }
         }
     }

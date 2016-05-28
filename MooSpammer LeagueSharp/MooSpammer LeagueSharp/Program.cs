@@ -546,7 +546,7 @@ namespace MooSpammer_LeagueSharp
                 case ".amount":
                     Game.Say("");
                     Game.PrintChat($"You have spammed {AmountSpammed.ToString()} times, wow!");
-                    switch (Random.Next(1, 5))
+                    switch (Random.Next(1, 6))
                     {
                         case 1:
                             wow_hawk.Play();

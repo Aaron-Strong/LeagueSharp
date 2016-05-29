@@ -34,10 +34,10 @@ namespace MooSpammer_LeagueSharp
         //public static IDictionary<string, SpamSave> spamDictionary = new Dictionary<string, SpamSave>();
 
         //probably not the easiest or the right way to do a help command but hey i'm playing with things...
-        public static string help = @".cow, .dalek, .milk, .lobby [name], .twitch [name], .icy, .jquery,
-                .detection, .who, .tilt, .memes, .ape, .jquery2, .degrec, .suck,
-                .media, .moo, .royals, .:ro:, .teammoo, .giveaway, .custom [spam] [lines of spam],
-                .clearconsole, .customsave, .count, .help";
+        public static string[] help = new string[] {".cow", ".dalek", ".milk", ".lobby [name]", ".twitch [name]", ".icy", ".jquery",
+                ".detection", ".who", ".tilt", ".memes", ".ape", ".jquery2", ".degrec", ".suck",
+                ".media", ".moo", ".royals", ".:ro:", ".teammoo", ".giveaway", ".custom [spam] [lines of spam]",
+                ".clearconsole", ".customsave", ".count", ".help"};
         public static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += game_OnGameLoad;
@@ -541,7 +541,21 @@ namespace MooSpammer_LeagueSharp
                 case ".help":
                 case ".commands":
                     Game.Say("");
-                    Game.PrintChat();
+                    int countToSeven = 0;
+                    int combinedCount = 0;
+                    string combined = " ";
+                    foreach (string moo in help)
+                    {
+                        countToSeven++;
+                        combinedCount++;
+                        combined = moo + " " + combined;
+                        if (combinedCount == help.Length || countToSeven == 7)
+                        {
+                            Game.PrintChat(combined);
+                            combined = "";
+                            countToSeven = 0;
+                        }
+                    }
                     break;
 
                 case ".count":

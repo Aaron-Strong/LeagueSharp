@@ -1,43 +1,35 @@
-using LeagueSharp;
+﻿using LeagueSharp;
 using LeagueSharp.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Media;
 using System.Text.RegularExpressions;
-
-namespace MooSpammer_LeagueSharp
+namespace MooSpammer
 {
-    /*work in progress
-    class SpamSave
-    {
-        public SpamSave()
-        {
-            position++;
-        }
-        public string spamText { get; set; }
-        public int position = 0;
 
-    }
-    */
     class Program
     {
+        #region variable_declaration
         public static Menu Config;
         public static string all = " ";
         public static int AmountSpammed = 0; //one day i'll learn how to show stuff on screen and this will be useful
         public static Random Random;
+        public static int counter = 1;
+        public static Dictionary<int, string> SpamText = new Dictionary<int, string>();
+        public static Dictionary<int, string> SpamName = new Dictionary<int, string>();
+        public static StringList SpamMenu = new StringList(new[] { "placeholder" });
         private static readonly SoundPlayer wow_hawk = new SoundPlayer(Properties.Resources.wow_hawk);
         private static readonly SoundPlayer wow_icy = new SoundPlayer(Properties.Resources.wow_icy);
         private static readonly SoundPlayer wow_jumpguy = new SoundPlayer(Properties.Resources.wow_jumpyguy);
         private static readonly SoundPlayer wow_jumpguy2 = new SoundPlayer(Properties.Resources.wow_jumpyguy2);
         private static readonly SoundPlayer wow_unixez_slurp = new SoundPlayer(Properties.Resources.wow_unixez_slurp);
-        //public static IDictionary<string, SpamSave> spamDictionary = new Dictionary<string, SpamSave>();
-
         //probably not the easiest or the right way to do a help command but hey i'm playing with things...
-        public static string help = @".cow, .dalek, .milk, .lobby [name], .twitch [name], .icy, .jquery,
-                .detection, .who, .tilt, .memes, .ape, .jquery2, .degrec, .suck,
-                .media, .moo, .royals, .:ro:, .teammoo, .giveaway, .custom [spam] [lines of spam],
-                .clearconsole, .customsave, .count, .help";
+        public static string[] help = new string[] {".cow", ".dalek", ".milk", ".lobby [name]", ".twitch [name]", ".icy", ".jquery",
+                ".detection", ".who", ".tilt", ".memes", ".ape", ".jquery2", ".degrec", ".suck",
+                ".media", ".moo", ".royals", ".:ro:", ".teammoo", ".giveaway", ".custom [spam] [lines of spam]",
+                ".clearconsole", ".customsave", ".count", ".clear", ".help"};
+        #endregion variable_declaration
         public static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += game_OnGameLoad;
@@ -54,45 +46,11 @@ namespace MooSpammer_LeagueSharp
                 .SetValue(new KeyBind('P', KeyBindType.Toggle));
             Config.AddSubMenu(new Menu("ConsoleCommands", "ConsoleCommands"));
             Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem("Available Spam:", "Available Spam:"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem("Blank", ""));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Cow", ".Cow"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Dalek", ".Dalek"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Milk", ".Milk"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Lobby", ".Lobby"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Twitch", ".Twitch"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Icy", ".Icy"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".jQuery", ".jQuery"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Detection", ".Detection"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Who?", ".Who?"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Tilt", ".Tilt"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Memes", ".Memes"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Apes", ".Apes"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".jQuery2", ".jQuery2"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Degrec", ".Dergec"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Suck", ".Suck"));
-            Config.SubMenu("ConsoleCommands")
-                .AddItem(new MenuItem(".Media", ".Media"));
+                .AddItem(new MenuItem("Available Spam:", "Type .help for console commands!"));
 
-            Config.AddSubMenu(new Menu("ButtonToSpam", "ButtonToSpam"));
+            Config.AddSubMenu(new Menu("Predefined Spam", "ButtonToSpam"));
             Config.SubMenu("ButtonToSpam")
-                .AddItem(new MenuItem("Press Button", "Press Button"))
+                .AddItem(new MenuItem("Press Button", "Predefined Spam Hotkey"))
                 .SetValue(new KeyBind('A', KeyBindType.Press));
             Config.SubMenu("ButtonToSpam")
                 .AddItem(new MenuItem("ChatType", "What To Spam"))
@@ -105,13 +63,21 @@ namespace MooSpammer_LeagueSharp
                         ));
             Config.AddSubMenu(new Menu("CustomSpam", "CustomSpam"));
             Config.SubMenu("CustomSpam")
-                .AddItem(new MenuItem("Custom Spam Goes Here!", "Custom Spam Goes Here!"));
+                .AddItem(new MenuItem("Custom Spam Goes Here!", "Toggle Custom Spam Here!"));
+            Config.SubMenu("CustomSpam")
+                .AddItem(new MenuItem("Spam not showing tip", "If the spam does not show up, click a different menu then return here!"));
+            Config.SubMenu("CustomSpam")
+                .AddItem(new MenuItem("Warning", "WARNING! REFRESHING L# WILL REMOVE SAVED SPAM!")).FontColor = new SharpDX.Color(255, 0, 0);
+            Config.SubMenu("CustomSpam")
+                .AddItem(new MenuItem("CustomSpamKey", "Custom Spam Hotkey"))
+                .SetValue(new KeyBind('T', KeyBindType.Press));
             Config.AddToMainMenu();
 
             #endregion menu
             Random = new Random();
             Game.OnUpdate += Game_OnGameUpdate;
             Game.OnInput += Game_OnGameInput;
+            
         }
 
         private static void Game_OnGameUpdate(EventArgs args)
@@ -225,7 +191,10 @@ namespace MooSpammer_LeagueSharp
             }
 
             #endregion ButtonSpam
+            customSpamLogic();
         }
+
+
 
         private static void Game_OnGameInput(GameInputEventArgs args)
         {
@@ -520,7 +489,7 @@ namespace MooSpammer_LeagueSharp
                     Game.Say("1 MONTH FREE SUBSCRIPTION: https://www.joduska.me/forum/topic/207998-1-month-leaguesharp-subscription-giveaway-anyone-can-join/");
                     break;
                 case ".custom":
-                    customSpam(text);
+                    customSpamSingleLogic(text);
                     break;
 
                 case ".clearconsole":
@@ -528,20 +497,30 @@ namespace MooSpammer_LeagueSharp
                     Game.PrintChat("ConsoleCleared");
                     break;
 
-                /*  
-                HUGE WORK IN PROGRESSS!!!!  
 
                 case ".customsave":
                 case ".customadd":
                 case ".customspam":
                     SaveLogic(text);
                     break;
-
-                */
                 case ".help":
                 case ".commands":
                     Game.Say("");
-                    Game.PrintChat();
+                    int countToSeven = 0;
+                    int combinedCount = 0;
+                    string combined = " ";
+                    foreach (string moo in help)
+                    {
+                        countToSeven++;
+                        combinedCount++;
+                        combined = moo + " " + combined;
+                        if (combinedCount == help.Length || countToSeven == 7)
+                        {
+                            Game.PrintChat(combined);
+                            combined = "";
+                            countToSeven = 0;
+                        }
+                    }
                     break;
 
                 case ".count":
@@ -569,6 +548,17 @@ namespace MooSpammer_LeagueSharp
                             break;
                     }
                     break;
+                case ".clear":
+                    Game.Say("");
+                    Game.PrintChat(".");
+                    Game.PrintChat(".");
+                    Game.PrintChat(".");
+                    Game.PrintChat(".");
+                    Game.PrintChat(".");
+                    Game.PrintChat(".");
+                    Game.PrintChat(".");
+                    Game.PrintChat(".");
+                    break;
                 default:
                     if (command.IndexOf('.') == 0)
                     {
@@ -585,29 +575,49 @@ namespace MooSpammer_LeagueSharp
         }
 
 
-        /*work in progress
-                private static void SaveLogic(string customText)
+
+        private static void SaveLogic(string customText)
+        {
+            Game.Say("");
+            Console.WriteLine($"Attempting Save Logic On: {customText}");
+            SpamText.Add(counter, customText);
+            SpamName.Add(counter, $"Custom Spam {counter.ToString()}");
+            //debugging tools
+            Game.PrintChat("Custom Spam saved");
+            //Game.PrintChat($"Counter = {counter.ToString()}");
+            Game.PrintChat($"Name = {SpamName[counter]}");
+            Game.PrintChat($"Spam = {SpamText[counter]}");
+            Config.SubMenu("CustomSpam")
+                .AddItem(new MenuItem(counter.ToString(), SpamName[counter] + " { " + SpamText[counter] + " }"))
+                .SetValue(new KeyBind('K', KeyBindType.Toggle));
+            Console.WriteLine($"Successfully Saved Logic With Name {SpamName[counter]}");
+            counter++;
+
+            //TODO: Add funtion to make other booleans false when one is changed.
+            //TODO: Add support for custom spam names using string.split('|')
+            //TODO: Call user a pleb if they save an empty spam.
+            //TODO: Limit amount of letters in a save or split them into seperate lines.
+            //TODO: Find out a way to make all this a stringlist and update menu in game.
+        }
+
+        private static void customSpamLogic()
+        {
+            if (SpamText.Count > 0)
+            {
+
+                for (int i = 1; i <= counter - 1; i++)
                 {
-                    //GetSpam
-                    string spam = customText;
-                    /*Match regexMatch = Regex.Match(customText, "\\d");
-
-                    if (regexMatch.Success)
+                    if (Config.Item(i.ToString()).GetValue<KeyBind>().Active && Config.Item("CustomSpamKey").GetValue<KeyBind>().Active)
                     {
-                        int digitStartIndex = regexMatch.Index;
-                        spam = customText.Substring(0, digitStartIndex);
-                        spamDictionary[customText] = new SpamSave { spamText = spam };
-                        Game.PrintChat($"Spam '{spam}' saved at menu positon {spamDictionary[customText].position}");
+                        Game.Say(SpamText[i]);
                     }
-                    else Game.PrintChat("Something Went Wrong, Fuck!");
-                }
-                *//*
-                    spamDictionary[customText] = new SpamSave { spamText = spam };
-                    Game.PrintChat($"Spam '{spam}' saved at menu positon {spamDictionary[customText].position}");
                 }
 
-        */
-        private static void customSpam(string customText)
+
+            }
+        }
+
+        private static void customSpamSingleLogic(string customText)
         {
             int Lines = 0;
             string spam = "Error";

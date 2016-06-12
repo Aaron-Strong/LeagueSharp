@@ -612,7 +612,7 @@ namespace MooSpammer
                         }
                         else all = "";
 
-                        Game.Say(all + " " + SpamText[i]);
+                        Game.Say(all + SpamText[i]);
                     }
                 }
 

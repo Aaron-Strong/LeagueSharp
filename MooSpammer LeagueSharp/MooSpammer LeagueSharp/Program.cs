@@ -606,7 +606,13 @@ namespace MooSpammer
                 {
                     if (Config.Item(i.ToString()).GetValue<KeyBind>().Active && Config.Item("CustomSpamKey").GetValue<KeyBind>().Active)
                     {
-                        Game.Say(SpamText[i]);
+                        if (Config.Item("allChat").GetValue<KeyBind>().Active)
+                        {
+                            all = "/all ";
+                        }
+                        else all = "";
+
+                        Game.Say(all + " " + SpamText[i]);
                     }
                 }
 

@@ -58,7 +58,7 @@ namespace MooSpammer
                     new StringList(
                         new[]
                         {
-                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory", "PlsStop", "T I L T E D", "Moo", "Royals", ":ro:", "'TeamMoo",
+                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory", "PlsStop", "T I L T E D", "Moo", "Royals", ":ro:", "'TeamMoo"
                         }
                         ));
             Config.AddSubMenu(new Menu("CustomSpam", "CustomSpam"));
@@ -225,43 +225,43 @@ namespace MooSpammer
 
                 case ".cow":
                     Game.Say($"{all} ( {text} )");
-                    Game.Say(@"{all} ........o....^__^");
-                    Game.Say(@"{all} ..........o..(oO)\_______");
-                    Game.Say(@"{all} .............(__)\ ######)\/\");
-                    Game.Say(@"{all} ..............U  ||----w |");
-                    Game.Say(@"{all} .................||.....||");
+                    Game.Say($@"{all} ........o....^__^");
+                    Game.Say($@"{all} ..........o..(oO)\_______");
+                    Game.Say($@"{all} .............(__)\ ######)\/\");
+                    Game.Say($@"{all} ..............U  ||----w |");
+                    Game.Say($@"{all} .................||.....||");
                     AmountSpammed += 6;
                     break;
 
 
                 case ".dalek":
                     Game.Say($"{all} .( {text} )");
-                    Game.Say(@"{all} ....o...D>=G==='   '.");
-                    Game.Say(@"{all} .............|======|");
-                    Game.Say(@"{all} ......o......|======|");
-                    Game.Say(@"{all} .........)--/]IIIIII]");
-                    Game.Say(@"{all} ............|_______|");
-                    Game.Say(@"{all} ............C O O O D");
-                    Game.Say(@"{all} ...........C O  O  O D");
-                    Game.Say(@"{all} ..........C  O  O  O  D");
-                    Game.Say(@"{all} ..........C__O__O__O__D");
-                    Game.Say(@"{all} .........[_____________]");
+                    Game.Say($@"{all} ....o...D>=G==='   '.");
+                    Game.Say($@"{all} .............|======|");
+                    Game.Say($@"{all} ......o......|======|");
+                    Game.Say($@"{all} .........)--/]IIIIII]");
+                    Game.Say($@"{all} ............|_______|");
+                    Game.Say($@"{all} ............C O O O D");
+                    Game.Say($@"{all} ...........C O  O  O D");
+                    Game.Say($@"{all} ..........C  O  O  O  D");
+                    Game.Say($@"{all} ..........C__O__O__O__D");
+                    Game.Say($@"{all} .........[_____________]");
                     AmountSpammed += 11;
                     break;
 
 
                 case ".milk":
                     Game.Say($"{all} ( {text}");
-                    Game.Say(@"{all} . o   /////////////\\\\");
-                    Game.Say(@"{all} .  o /___________/___/|");
-                    Game.Say(@"{all} .....|##########|");
-                    Game.Say(@"{all} .....| ==\\ /== |.....|");
-                    Game.Say(@"{all} .....|# O---O # |.\\ \\ |");
-                    Game.Say(@"{all} .....|### O ####|...\\ \\|");
-                    Game.Say(@"{all} ..../|##########|...\\ \\");
-                    Game.Say(@"{all} .../ | \\_____/ |.../ /");
-                    Game.Say(@"{all} ../ /|##########|../ /|");
-                    Game.Say(@"{all} ./||\\----------|./||\\/");
+                    Game.Say($@"{all} . o   /////////////\\\\");
+                    Game.Say($@"{all} .  o /___________/___/|");
+                    Game.Say($@"{all} .....|##########|");
+                    Game.Say($@"{all} .....| ==\\ /== |.....|");
+                    Game.Say($@"{all} .....|# O---O # |.\\ \\ |");
+                    Game.Say($@"{all} .....|### O ####|...\\ \\|");
+                    Game.Say($@"{all} ..../|##########|...\\ \\");
+                    Game.Say($@"{all} .../ | \\_____/ |.../ /");
+                    Game.Say($@"{all} ../ /|##########|../ /|");
+                    Game.Say($@"{all} ./||\\----------|./||\\/");
                     AmountSpammed += 11;
                     break;
 
@@ -601,10 +601,9 @@ namespace MooSpammer
         {
             if (SpamText.Count > 0)
             {
-
                 for (int i = 1; i <= counter - 1; i++)
                 {
-                    if (Config.Item(i.ToString()).GetValue<KeyBind>().Active && Config.Item("CustomSpamKey").GetValue<KeyBind>().Active)
+                   if(Config.Item("CustomSpamKey").GetValue<KeyBind>().Active)
                     {
                         if (Config.Item("allChat").GetValue<KeyBind>().Active)
                         {
@@ -612,11 +611,12 @@ namespace MooSpammer
                         }
                         else all = "";
 
-                        Game.Say(all + SpamText[i]);
+                        if (Config.Item(i.ToString()).GetValue<KeyBind>().Active)
+                        {
+                            Game.Say(all + SpamText[i]);
+                        }
                     }
                 }
-
-
             }
         }
 

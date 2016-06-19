@@ -197,15 +197,20 @@ namespace MooSpammer
                         break;
 
                     case 17:
+                        Game.Say("HEIL");
+                        Game.Say($"{all}####______################");
                         Game.Say($"{all}####______################");
                         Game.Say($"{all}####______#####___________");
                         Game.Say($"{all}####______#####___________");
-                        Game.Say($"{all}###########################");
-                        Game.Say($"{all}###########################");
+                        Game.Say($"{all}########################");
+                        Game.Say($"{all}########################");
                         Game.Say($"{all}___________#####______#####");
                         Game.Say($"{all}___________#####______#####");
-                        Game.Say($"{all}################______#####");
-                        AmountSpammed += 8;
+                        Game.Say($"{all}#############______#####");
+                        Game.Say($"{all}#############______#####");
+                        Game.Say(all);
+
+                        AmountSpammed += 11;
                         break;
 
                     default:
@@ -515,15 +520,19 @@ namespace MooSpammer
                 case ".hitler":
                 case ".nazi":
                 case ".natzi": //Guarantee some people think this is how it's spelt
+                    Game.Say("HEIL");
+                    Game.Say($"{all}####______################");
                     Game.Say($"{all}####______################");
                     Game.Say($"{all}####______#####___________");
                     Game.Say($"{all}####______#####___________");
-                    Game.Say($"{all}###########################");
-                    Game.Say($"{all}###########################");
+                    Game.Say($"{all}########################");
+                    Game.Say($"{all}########################");
                     Game.Say($"{all}___________#####______#####");
                     Game.Say($"{all}___________#####______#####");
-                    Game.Say($"{all}################______#####");
-                    AmountSpammed += 8;
+                    Game.Say($"{all}#############______#####");
+                    Game.Say($"{all}#############______#####");
+                    Game.Say(all);
+                    AmountSpammed += 11;
                     break;
 
                 case ".custom":

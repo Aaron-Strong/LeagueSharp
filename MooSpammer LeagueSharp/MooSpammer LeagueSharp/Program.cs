@@ -7,10 +7,10 @@ using System.Media;
 using System.Text.RegularExpressions;
 namespace MooSpammer
 {
-
-    class Program
+    internal class Program
     {
         #region variable_declaration
+
         public static Menu Config;
         public static string all = " ";
         public static int AmountSpammed = 0; //one day i'll learn how to show stuff on screen and this will be useful
@@ -18,18 +18,24 @@ namespace MooSpammer
         public static int counter = 1;
         public static Dictionary<int, string> SpamText = new Dictionary<int, string>();
         public static Dictionary<int, string> SpamName = new Dictionary<int, string>();
+        public static Dictionary<string, string> SpamJsonChamp = new Dictionary<string, string>();
+        public static Dictionary<string, string> SpamJsonCustom = new Dictionary<string, string>();
         public static StringList SpamMenu = new StringList(new[] { "placeholder" });
         private static readonly SoundPlayer wow_hawk = new SoundPlayer(Properties.Resources.wow_hawk);
         private static readonly SoundPlayer wow_icy = new SoundPlayer(Properties.Resources.wow_icy);
         private static readonly SoundPlayer wow_jumpguy = new SoundPlayer(Properties.Resources.wow_jumpyguy);
         private static readonly SoundPlayer wow_jumpguy2 = new SoundPlayer(Properties.Resources.wow_jumpyguy2);
         private static readonly SoundPlayer wow_unixez_slurp = new SoundPlayer(Properties.Resources.wow_unixez_slurp);
+
         //probably not the easiest or the right way to do a help command but hey i'm playing with things...
         public static string[] help = new string[] {".cow", ".dalek", ".milk", ".lobby [name]", ".twitch [name]", ".icy", ".jquery",
                 ".detection", ".who", ".tilt", ".memes", ".ape", ".jquery2", ".degrec", ".suck",
                 ".media", ".moo", ".royals", ".:ro:", ".teammoo", ".custom [spam] [lines of spam]",
                 ".clearconsole", ".customsave", ".count", ".clear", ".help"};
+
+
         #endregion variable_declaration
+
         public static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += game_OnGameLoad;
@@ -37,6 +43,7 @@ namespace MooSpammer
 
         public static void game_OnGameLoad(EventArgs args)
         {
+            Champs.Init();
             #region menu
 
             Config = new Menu("MooSpammer", "MooSpammer", true);
@@ -74,11 +81,15 @@ namespace MooSpammer
             Config.AddToMainMenu();
 
             #endregion menu
+            SpamJsonChamp = Champs.LoadJsonChamps();
+            SpamJsonCustom = Champs.LoadJsonCustom();
+            JsonMenu();
             Random = new Random();
             Game.OnUpdate += Game_OnGameUpdate;
             Game.OnInput += Game_OnGameInput;
-            
         }
+
+
 
         private static void Game_OnGameUpdate(EventArgs args)
         {
@@ -174,21 +185,26 @@ namespace MooSpammer
                         Game.Say($"{all} I dunno, something about an eggplant");
                         AmountSpammed++;
                         break;
+
                     case 15:
                         Game.Say($"{all} :ro:");
                         AmountSpammed++;
                         break;
+
                     case 16:
                         Game.Say($"{all} #TeamMoo");
                         AmountSpammed++;
                         break;
+
                     default:
                         break;
                 }
             }
 
             #endregion ButtonSpam
+
             customSpamLogic();
+            customJsonSpamLogic();
         }
 
 
@@ -222,7 +238,6 @@ namespace MooSpammer
             switch (command.ToLower())
 
             {
-
                 case ".cow":
                     Game.Say($"{all} ( {text} )");
                     Game.Say($@"{all} ........o....^__^");
@@ -232,7 +247,6 @@ namespace MooSpammer
                     Game.Say($@"{all} .................||.....||");
                     AmountSpammed += 6;
                     break;
-
 
                 case ".dalek":
                     Game.Say($"{all} .( {text} )");
@@ -249,7 +263,6 @@ namespace MooSpammer
                     AmountSpammed += 11;
                     break;
 
-
                 case ".milk":
                     Game.Say($"{all} ( {text}");
                     Game.Say($@"{all} . o   /////////////\\\\");
@@ -264,7 +277,6 @@ namespace MooSpammer
                     Game.Say($@"{all} ./||\\----------|./||\\/");
                     AmountSpammed += 11;
                     break;
-
 
                 case ".lobby":
                     Game.Say($"{all} Welcome to {text}'s Modded Lobby");
@@ -282,7 +294,6 @@ namespace MooSpammer
                     Utility.DelayAction.Add(12000, () => Game.Say($"{all} www.moo.tokyo"));
                     AmountSpammed += 13;
                     break;
-
 
                 case ".twitch":
                     Game.Say($"{all} Be sure to watch my stream at");
@@ -482,9 +493,11 @@ namespace MooSpammer
                     Utility.DelayAction.Add(3000, () => Game.Say($"{all} #TeamMoo"));
                     AmountSpammed += 3;
                     break;
+
                 case ".giveaway":
                     Game.Say("1 MONTH FREE SUBSCRIPTION: https://www.joduska.me/forum/topic/207998-1-month-leaguesharp-subscription-giveaway-anyone-can-join/");
                     break;
+
                 case ".custom":
                     customSpamSingleLogic(text);
                     break;
@@ -494,12 +507,12 @@ namespace MooSpammer
                     Game.PrintChat("ConsoleCleared");
                     break;
 
-
                 case ".customsave":
                 case ".customadd":
                 case ".customspam":
                     SaveLogic(text);
                     break;
+
                 case ".help":
                 case ".commands":
                     Game.Say("");
@@ -529,22 +542,28 @@ namespace MooSpammer
                         case 1:
                             wow_hawk.Play();
                             break;
+
                         case 2:
                             wow_icy.Play();
                             break;
+
                         case 3:
                             wow_jumpguy.Play();
                             break;
+
                         case 4:
                             wow_jumpguy2.Play();
                             break;
+
                         case 5:
                             wow_unixez_slurp.Play();
                             break;
+
                         default:
                             break;
                     }
                     break;
+
                 case ".clear":
                     Game.Say("");
                     Game.PrintChat(".");
@@ -556,6 +575,14 @@ namespace MooSpammer
                     Game.PrintChat(".");
                     Game.PrintChat(".");
                     break;
+
+                case ".names":
+                    foreach (var champ in HeroManager.Enemies)
+                    {
+                        Game.Say(champ.ChampionName);
+                    }
+                    break;
+
                 default:
                     if (command.IndexOf('.') == 0)
                     {
@@ -571,8 +598,6 @@ namespace MooSpammer
             #endregion ChatCommands
         }
 
-
-
         private static void SaveLogic(string customText)
         {
             Game.Say("");
@@ -584,9 +609,9 @@ namespace MooSpammer
             //Game.PrintChat($"Counter = {counter.ToString()}");
             Game.PrintChat($"Name = {SpamName[counter]}");
             Game.PrintChat($"Spam = {SpamText[counter]}");
-            Config.SubMenu("CustomSpam")
-                .AddItem(new MenuItem(counter.ToString(), SpamName[counter] + " { " + SpamText[counter] + " }"))
-                .SetValue(new KeyBind('K', KeyBindType.Toggle));
+                Config.SubMenu("CustomSpam")
+                    .AddItem(new MenuItem(counter.ToString(), SpamName[counter] + " { " + SpamText[counter] + " }"))
+                    .SetValue(new KeyBind('K', KeyBindType.Toggle, counter == 1 ? true : false));
             Console.WriteLine($"Successfully Saved Logic With Name {SpamName[counter]}");
             counter++;
 
@@ -603,7 +628,7 @@ namespace MooSpammer
             {
                 for (int i = 1; i <= counter - 1; i++)
                 {
-                   if(Config.Item("CustomSpamKey").GetValue<KeyBind>().Active)
+                    if (Config.Item("CustomSpamKey").GetValue<KeyBind>().Active)
                     {
                         if (Config.Item("allChat").GetValue<KeyBind>().Active)
                         {
@@ -615,6 +640,48 @@ namespace MooSpammer
                         {
                             Game.Say(all + SpamText[i]);
                         }
+                    }
+                }
+            }
+        }
+
+        private static void JsonMenu()
+        {
+            #region ChampMenu
+            var count = 0;
+            if (SpamJsonChamp == null) return;
+            Config.SubMenu(ObjectManager.Player.ChampionName)
+                .AddItem(new MenuItem($"{ObjectManager.Player.ChampionName} Hotkey", $"{ObjectManager.Player.ChampionName} Hotkey"))
+                .SetValue(new KeyBind('U', KeyBindType.Press));
+
+            foreach (KeyValuePair<string, string> entry in SpamJsonChamp)
+            {
+                Config.SubMenu(ObjectManager.Player.ChampionName)
+                .AddItem(new MenuItem(entry.Key, entry.Key))
+                .SetValue(new KeyBind('K', KeyBindType.Toggle, count == 0 ? true : false));
+                count++;
+            }
+            #endregion ChampMenu
+
+
+        }
+
+        private static void customJsonSpamLogic()
+        {
+            if (SpamJsonChamp == null) return;
+            if (Config.Item("allChat").GetValue<KeyBind>().Active)
+            {
+                all = "/all ";
+            }
+            else all = "";
+            
+            if (Config.Item($"{ObjectManager.Player.ChampionName} Hotkey").GetValue<KeyBind>().Active)
+            {
+                foreach (KeyValuePair<string, string> entry in SpamJsonChamp)
+                {
+                    if (Config.Item(entry.Key).GetValue<KeyBind>().Active)
+                    {
+                        Game.Say(all + entry.Value);
                     }
                 }
             }

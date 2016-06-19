@@ -37,13 +37,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LeagueSharp">
-      <HintPath>C:\Program Files (x86)\LeagueSharp\System\LeagueSharp.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\PlaySharp\System\LeagueSharp.dll</HintPath>
     </Reference>
     <Reference Include="LeagueSharp.Common">
-      <HintPath>C:\Program Files (x86)\LeagueSharp\System\LeagueSharp.Common.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\PlaySharp\System\LeagueSharp.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\PlaySharp\System\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>C:\Program Files (x86)\LeagueSharp\System\SharpDX.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\PlaySharp\System\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Champs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -73,6 +78,138 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Champ Spam Json Presets\Aatrox.json" />
+    <None Include="Champ Spam Json Presets\Ahri.json" />
+    <None Include="Champ Spam Json Presets\Akali.json" />
+    <None Include="Champ Spam Json Presets\Alistar.json" />
+    <None Include="Champ Spam Json Presets\Amumu.json" />
+    <None Include="Champ Spam Json Presets\Anivia.json" />
+    <None Include="Champ Spam Json Presets\Annie.json" />
+    <None Include="Champ Spam Json Presets\Ashe.json" />
+    <None Include="Champ Spam Json Presets\AurelionSol.json" />
+    <None Include="Champ Spam Json Presets\Azir.json" />
+    <None Include="Champ Spam Json Presets\Bard.json" />
+    <None Include="Champ Spam Json Presets\Blitzcrank.json" />
+    <None Include="Champ Spam Json Presets\Brand.json" />
+    <None Include="Champ Spam Json Presets\Braum.json" />
+    <None Include="Champ Spam Json Presets\Caitlyn.json" />
+    <None Include="Champ Spam Json Presets\Cassiopeia.json" />
+    <None Include="Champ Spam Json Presets\Cho%27Gath.json" />
+    <None Include="Champ Spam Json Presets\Corki.json" />
+    <None Include="Champ Spam Json Presets\Darius.json" />
+    <None Include="Champ Spam Json Presets\Diana.json" />
+    <None Include="Champ Spam Json Presets\Dr.Mundo.json" />
+    <None Include="Champ Spam Json Presets\Draven.json" />
+    <None Include="Champ Spam Json Presets\Ekko.json" />
+    <None Include="Champ Spam Json Presets\Elise.json" />
+    <None Include="Champ Spam Json Presets\Evelyn.json" />
+    <None Include="Champ Spam Json Presets\Ezreal.json" />
+    <None Include="Champ Spam Json Presets\Fiddlesticks.json" />
+    <None Include="Champ Spam Json Presets\Fiora.json" />
+    <None Include="Champ Spam Json Presets\Fizz.json" />
+    <None Include="Champ Spam Json Presets\Galio.json" />
+    <None Include="Champ Spam Json Presets\Gangplank.json" />
+    <None Include="Champ Spam Json Presets\Garen.json" />
+    <None Include="Champ Spam Json Presets\Gnar.json" />
+    <None Include="Champ Spam Json Presets\Gragas.json" />
+    <None Include="Champ Spam Json Presets\Graves.json" />
+    <None Include="Champ Spam Json Presets\Hecarim.json" />
+    <None Include="Champ Spam Json Presets\Heimerdinger.json" />
+    <None Include="Champ Spam Json Presets\Illaoi.json" />
+    <None Include="Champ Spam Json Presets\Irelia.json" />
+    <None Include="Champ Spam Json Presets\Janna.json" />
+    <None Include="Champ Spam Json Presets\JarvenIV.json" />
+    <None Include="Champ Spam Json Presets\Jax.json" />
+    <None Include="Champ Spam Json Presets\Jayce.json" />
+    <None Include="Champ Spam Json Presets\Jhin.json" />
+    <None Include="Champ Spam Json Presets\Jinx.json" />
+    <None Include="Champ Spam Json Presets\Kalista.json" />
+    <None Include="Champ Spam Json Presets\Karma.json" />
+    <None Include="Champ Spam Json Presets\Karthus.json" />
+    <None Include="Champ Spam Json Presets\Kassadiin.json" />
+    <None Include="Champ Spam Json Presets\Katarina.json" />
+    <None Include="Champ Spam Json Presets\Kayle.json" />
+    <None Include="Champ Spam Json Presets\Kennen.json" />
+    <None Include="Champ Spam Json Presets\Kha%27Zix.json" />
+    <None Include="Champ Spam Json Presets\Kindred.json" />
+    <None Include="Champ Spam Json Presets\Kog%27Maw.json" />
+    <None Include="Champ Spam Json Presets\LeBlanc.json" />
+    <None Include="Champ Spam Json Presets\LeeSin.json" />
+    <None Include="Champ Spam Json Presets\Leona.json" />
+    <None Include="Champ Spam Json Presets\Lissandra.json" />
+    <None Include="Champ Spam Json Presets\Lucian.json" />
+    <None Include="Champ Spam Json Presets\Lulu.json" />
+    <None Include="Champ Spam Json Presets\Lux.json" />
+    <None Include="Champ Spam Json Presets\Malphite.json" />
+    <None Include="Champ Spam Json Presets\Malzahar.json" />
+    <None Include="Champ Spam Json Presets\Maokai.json" />
+    <None Include="Champ Spam Json Presets\MasterYi.json" />
+    <None Include="Champ Spam Json Presets\MissFortune.json" />
+    <None Include="Champ Spam Json Presets\MonkeyKing.json" />
+    <None Include="Champ Spam Json Presets\Mordekaiser.json" />
+    <None Include="Champ Spam Json Presets\Morgana.json" />
+    <None Include="Champ Spam Json Presets\Nami.json" />
+    <None Include="Champ Spam Json Presets\Nasus.json" />
+    <None Include="Champ Spam Json Presets\Nautilus.json" />
+    <None Include="Champ Spam Json Presets\Nocturne.json" />
+    <None Include="Champ Spam Json Presets\Nunu.json" />
+    <None Include="Champ Spam Json Presets\Olaf.json" />
+    <None Include="Champ Spam Json Presets\Orianna.json" />
+    <None Include="Champ Spam Json Presets\Pantheon.json" />
+    <None Include="Champ Spam Json Presets\Poppy.json" />
+    <None Include="Champ Spam Json Presets\Quinn.json" />
+    <None Include="Champ Spam Json Presets\Rammus.json" />
+    <None Include="Champ Spam Json Presets\Rek%27Sai.json" />
+    <None Include="Champ Spam Json Presets\Renekton.json" />
+    <None Include="Champ Spam Json Presets\Rengar.json" />
+    <None Include="Champ Spam Json Presets\Riven.json" />
+    <None Include="Champ Spam Json Presets\Rumble.json" />
+    <None Include="Champ Spam Json Presets\Ryze.json" />
+    <None Include="Champ Spam Json Presets\Sejuani.json" />
+    <None Include="Champ Spam Json Presets\Shaco.json" />
+    <None Include="Champ Spam Json Presets\Shen.json" />
+    <None Include="Champ Spam Json Presets\Shyvana.json" />
+    <None Include="Champ Spam Json Presets\Singed.json" />
+    <None Include="Champ Spam Json Presets\Sion.json" />
+    <None Include="Champ Spam Json Presets\Sivir.json" />
+    <None Include="Champ Spam Json Presets\Skarner.json" />
+    <None Include="Champ Spam Json Presets\Sona.json" />
+    <None Include="Champ Spam Json Presets\Soraka.json" />
+    <None Include="Champ Spam Json Presets\Swain.json" />
+    <None Include="Champ Spam Json Presets\Syndra.json" />
+    <None Include="Champ Spam Json Presets\TahmKench.json" />
+    <None Include="Champ Spam Json Presets\Taliyah.json" />
+    <None Include="Champ Spam Json Presets\Talon.json" />
+    <None Include="Champ Spam Json Presets\Taric.json" />
+    <None Include="Champ Spam Json Presets\Teemo.json" />
+    <None Include="Champ Spam Json Presets\Thresh.json" />
+    <None Include="Champ Spam Json Presets\Tristana.json" />
+    <None Include="Champ Spam Json Presets\Trundle.json" />
+    <None Include="Champ Spam Json Presets\Tryndamere.json" />
+    <None Include="Champ Spam Json Presets\TwistedFate.json" />
+    <None Include="Champ Spam Json Presets\Twitch.json" />
+    <None Include="Champ Spam Json Presets\Udyr.json" />
+    <None Include="Champ Spam Json Presets\Urgot.json" />
+    <None Include="Champ Spam Json Presets\Varus.json" />
+    <None Include="Champ Spam Json Presets\Vayne.json" />
+    <None Include="Champ Spam Json Presets\Veigar.json" />
+    <None Include="Champ Spam Json Presets\Vel%27Koz.json" />
+    <None Include="Champ Spam Json Presets\Vi.json" />
+    <None Include="Champ Spam Json Presets\Viktor.json" />
+    <None Include="Champ Spam Json Presets\Vladimir.json" />
+    <None Include="Champ Spam Json Presets\Volibear.json" />
+    <None Include="Champ Spam Json Presets\Warwick.json" />
+    <None Include="Champ Spam Json Presets\Xerath.json" />
+    <None Include="Champ Spam Json Presets\XinZhao.json" />
+    <None Include="Champ Spam Json Presets\Yasuo.json" />
+    <None Include="Champ Spam Json Presets\Yorick.json" />
+    <None Include="Champ Spam Json Presets\Zac.json" />
+    <None Include="Champ Spam Json Presets\Zed.json" />
+    <None Include="Champ Spam Json Presets\Ziggs.json" />
+    <None Include="Champ Spam Json Presets\Zilean.json" />
+    <None Include="Champ Spam Json Presets\Zyra.json" />
+    <None Include="Example.json" />
+    <None Include="packages.config" />
     <None Include="Resources\wow_unixez_slurp.wav" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +224,7 @@
   <ItemGroup>
     <None Include="Resources\wow_icy.wav" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

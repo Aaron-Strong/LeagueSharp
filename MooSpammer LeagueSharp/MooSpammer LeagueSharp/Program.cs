@@ -65,7 +65,7 @@ namespace MooSpammer
                     new StringList(
                         new[]
                         {
-                            "jQuery", "Detection", "MikuDidThis", "Tilted", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "Media", "Exory", "PlsStop", "T I L T E D", "Moo", "Royals", ":ro:", "'TeamMoo"
+                            "jQuery", "Detection", "MikuDidThis", "Media Tilts Me", "Memes", "Apes", "jQuery2", "Degrec", "Suck", "You suck", "Exory", "PlsStop", "T I L T E D", "Moo", "Royals", ":ro:", "'TeamMoo", "Blacky"
                         }
                         ));
             Config.AddSubMenu(new Menu("CustomSpam", "CustomSpam"));
@@ -194,6 +194,18 @@ namespace MooSpammer
                     case 16:
                         Game.Say($"{all} #TeamMoo");
                         AmountSpammed++;
+                        break;
+
+                    case 17:
+                        Game.Say($"{all}####______################");
+                        Game.Say($"{all}####______#####___________");
+                        Game.Say($"{all}####______#####___________");
+                        Game.Say($"{all}###########################");
+                        Game.Say($"{all}###########################");
+                        Game.Say($"{all}___________#####______#####");
+                        Game.Say($"{all}___________#####______#####");
+                        Game.Say($"{all}################______#####");
+                        AmountSpammed += 8;
                         break;
 
                     default:
@@ -496,6 +508,22 @@ namespace MooSpammer
 
                 case ".giveaway":
                     Game.Say("1 MONTH FREE SUBSCRIPTION: https://www.joduska.me/forum/topic/207998-1-month-leaguesharp-subscription-giveaway-anyone-can-join/");
+                    AmountSpammed++;
+                    break;
+
+                case ".blacky":
+                case ".hitler":
+                case ".nazi":
+                case ".natzi": //Guarantee some people think this is how it's spelt
+                    Game.Say($"{all}####______################");
+                    Game.Say($"{all}####______#####___________");
+                    Game.Say($"{all}####______#####___________");
+                    Game.Say($"{all}###########################");
+                    Game.Say($"{all}###########################");
+                    Game.Say($"{all}___________#####______#####");
+                    Game.Say($"{all}___________#####______#####");
+                    Game.Say($"{all}################______#####");
+                    AmountSpammed += 8;
                     break;
 
                 case ".custom":
@@ -576,13 +604,6 @@ namespace MooSpammer
                     Game.PrintChat(".");
                     break;
 
-                case ".names":
-                    foreach (var champ in HeroManager.Enemies)
-                    {
-                        Game.Say(champ.ChampionName);
-                    }
-                    break;
-
                 default:
                     if (command.IndexOf('.') == 0)
                     {
@@ -649,6 +670,7 @@ namespace MooSpammer
         {
             #region ChampMenu
             var count = 0;
+            var menucount = 0;
             if (SpamJsonChamp == null) return;
             Config.SubMenu(ObjectManager.Player.ChampionName)
                 .AddItem(new MenuItem($"{ObjectManager.Player.ChampionName} Hotkey", $"{ObjectManager.Player.ChampionName} Hotkey"))
@@ -656,10 +678,15 @@ namespace MooSpammer
 
             foreach (KeyValuePair<string, string> entry in SpamJsonChamp)
             {
-                Config.SubMenu(ObjectManager.Player.ChampionName)
+                Config.SubMenu(ObjectManager.Player.ChampionName + $"[{menucount}]")
                 .AddItem(new MenuItem(entry.Key, entry.Key))
-                .SetValue(new KeyBind('K', KeyBindType.Toggle, count == 0 ? true : false));
+                .SetValue(count == 0 ? true : false);
                 count++;
+                if (count == 15)
+                {
+                    count = 1;
+                    menucount++;
+                } 
             }
             #endregion ChampMenu
 
@@ -679,7 +706,7 @@ namespace MooSpammer
             {
                 foreach (KeyValuePair<string, string> entry in SpamJsonChamp)
                 {
-                    if (Config.Item(entry.Key).GetValue<KeyBind>().Active)
+                    if (Config.Item(entry.Key).GetValue<bool>())
                     {
                         Game.Say(all + entry.Value);
                     }

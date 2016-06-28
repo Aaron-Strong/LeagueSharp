@@ -109,7 +109,8 @@ namespace MooSpammer
                         Game.Say($"{all} jQuery is an adorable cutie but remember she is only 15 years old. How can you post your s... picture named by her name ?? ");
                         Game.Say($"{all} Well if you're under 18y old, I could agree the fact you need to be medically suived but I will never agree to post those shit ... ");
                         Game.Say($"{all} Just stay away, you're probably banned at this moment ... ");
-                        AmountSpammed += 3;
+                        Game.Say($"{all} The scuttle crab has more jungle pressure than you ");
+                        AmountSpammed += 4;
                         break;
 
                     case 1:

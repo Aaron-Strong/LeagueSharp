@@ -57,9 +57,6 @@ namespace MooSpammer
                 .AddItem(new MenuItem("Spam not showing tip",
                     "If the spam does not show up, click a different menu then return here!"));
             Config.SubMenu("CustomSpam")
-                    .AddItem(new MenuItem("Warning", "WARNING! REFRESHING L# WILL REMOVE SAVED SPAM!")).FontColor =
-                new Color(255, 0, 0);
-            Config.SubMenu("CustomSpam")
                 .AddItem(new MenuItem("CustomSpamKey", "Custom Spam Hotkey"))
                 .SetValue(new KeyBind('T', KeyBindType.Press));
             Config.AddToMainMenu();

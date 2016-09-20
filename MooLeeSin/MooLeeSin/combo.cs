@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LeagueSharp;
-using LeagueSharp.Common;
+using LeagueSharp.SDK;
+using LeagueSharp.SDK.Enumerations;
+using LeagueSharp.SDK.UI;
 
 namespace MooLeeSin
 {
@@ -12,11 +14,11 @@ namespace MooLeeSin
     {
         public static void init()
         {
-            if (MenuConfig.MenuMoochanics.Item("Insec").GetValue<KeyBind>().Active)
+            if (MenuConfig.MenuHome["Moochanics"]["Insec"].GetValue<MenuKeyBind>().Active)
             {
                 Game.PrintChat("Insec");
             }
-            if (Spells.Orbwalker.ActiveMode == Orbwalking.OrbwalkingMode.Combo)
+            if (Variables.Orbwalker.ActiveMode == OrbwalkingMode.Combo)
             {
                 Game.PrintChat("Combo");
             }

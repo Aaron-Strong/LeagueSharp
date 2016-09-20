@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LeagueSharp;
-using LeagueSharp.Common;
+using LeagueSharp.SDK;
 
 namespace MooLeeSin
 {
-    internal class StarCombo
+    internal class Insec
     {
         public static void init()
         {

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LeagueSharp;
-using LeagueSharp.Common;
+using LeagueSharp.SDK;
 using SharpDX;
+using LeagueSharp.SDK.Enumerations;
 
 namespace MooLeeSin
 {
     internal class Spells
     {
-        public static Orbwalking.Orbwalker Orbwalker;
         // TODO: Add item support here
         public static Spell Q, W, E, R;
         public static void init()

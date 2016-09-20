@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LeagueSharp;
-using LeagueSharp.Common;
-
+using LeagueSharp.SDK;
 namespace MooLeeSin
 {
-    internal class Insec
+
+    internal class Globals
     {
-        public static void init()
-        {
-            
-        }
+        public static double version = 0.1;
     }
 }

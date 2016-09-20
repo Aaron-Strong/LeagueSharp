@@ -8,7 +8,7 @@ using LeagueSharp.SDK;
 
 namespace MooLeeSin
 {
-    internal class Drawings
+    internal class StarCombo
     {
         public static void init()
         {

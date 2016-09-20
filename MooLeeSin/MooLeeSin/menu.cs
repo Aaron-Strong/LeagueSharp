@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 using LeagueSharp;
-using LeagueSharp.Common;
+using LeagueSharp.SDK;
+using LeagueSharp.SDK.Enumerations;
+using LeagueSharp.SDK.UI;
 using SharpDX;
 using Color = System.Drawing.Color;
-
+using Menu = LeagueSharp.SDK.UI.Menu;
+using MenuItem = LeagueSharp.SDK.UI.MenuItem;
 
 namespace MooLeeSin
 {
@@ -19,80 +23,57 @@ namespace MooLeeSin
             MenuFarm,
             MenuMoochanics,
             MenuWardhop,
-            MenuDrawings; //, MenuDebug;
+            MenuDrawings;
 
 
         public static void init()
         {
-            MenuHome = new Menu("MooLeeSin", "MooLeeSin" ,true);
+            MenuHome = new Menu("MooLeeSin", "MooLeeSin",true);
+            
 
-            MenuOrbwalker = MenuHome.AddSubMenu(new Menu("Orbwalking", "Orbwalking"));
+            MenuCombo = MenuHome.Add(new Menu("Combo", "Combo"));
             {
-                Spells.Orbwalker = new Orbwalking.Orbwalker(MenuOrbwalker);
-            }
-
-            MenuCombo = MenuHome.AddSubMenu(new Menu("Combo", "Combo"));
-            {
-                MenuCombo.AddItem(new MenuItem("wGapCloser", "Use W as gapcloser"))
-                    .SetValue(false)
-                    .SetTooltip("Turning this off will save W for passive or spellvamp if low hp");
+                MenuCombo.Add(new MenuBool("wGapCloser", "Use W as gapcloser", true));
                 // TODO: Combo menu
             }
-
-            MenuHarass = MenuHome.AddSubMenu(new Menu("Harass", "Harass"));
+            MenuHarass = MenuHome.Add(new Menu("Harass", "Harass"));
             {
-                MenuHarass.AddItem(new MenuItem("wShield", "Use W as shield"))
-                    .SetValue(false)
-                    .SetTooltip("Turning this off will save W for passive");
-                MenuHarass.AddItem(new MenuItem("qPoke", "Q poke and run"))
-                    .SetValue(new KeyBind('Y', KeyBindType.Press))
-                    .SetTooltip("Will use both Q activations and then use W to run to the nearest object");
+                MenuHarass.Add(new MenuBool("wShield", "Use W as shield", true));
+                MenuHarass.Add(new MenuKeyBind("qPoke", "Q poke and run", 
+                    System.Windows.Forms.Keys.Space, KeyBindType.Press));
                 // TODO: Harass menu
             }
-
-            MenuFarm = MenuHome.AddSubMenu(new Menu("Farm", "Farm"));
+            MenuFarm = MenuHome.Add(new Menu("Farm", "Farm"));
             {
-                MenuFarm.AddItem(new MenuItem("useQ", "Use Q")).SetValue(true);
-                MenuFarm.AddItem(new MenuItem("useW", "Use W")).SetValue(true);
-                MenuFarm.AddItem(new MenuItem("useE", "Use E")).SetValue(true);
-                MenuFarm.AddItem(new MenuItem("usePassive", "Use Passive")).SetValue(true);
+                MenuFarm.Add(new MenuBool("useQ", "Use Q", true));
+                MenuFarm.Add(new MenuBool("useW", "Use W", true));
+                MenuFarm.Add(new MenuBool("useE", "Use E", true));
+                MenuFarm.Add(new MenuBool("usePassive", "Use Passive", true));
                 // TODO: Farm menu
             }
-
-            MenuMoochanics = MenuHome.AddSubMenu(new Menu("Moochanics", "Moochanics"))
-                .SetFontStyle(FontStyle.Bold, SharpDX.Color.IndianRed);
+            MenuMoochanics = MenuHome.Add(new Menu("Moochanics", "Moochanics"));
             {
-                MenuMoochanics.AddItem(new MenuItem("Insec", "Insec"))
-                    .SetValue(new KeyBind('T', KeyBindType.Press));
-                MenuMoochanics.AddItem(new MenuItem("StarCombo", "StarCombo"))
-                    .SetValue(new KeyBind('G', KeyBindType.Press));
+                MenuMoochanics.Add(new MenuKeyBind("Insec", "Insec", Keys.T, KeyBindType.Press));
+                MenuMoochanics.Add(new MenuKeyBind("StarCombo", "StarCombo", Keys.G, KeyBindType.Press));
                 // TODO: Moochanics menu
             }
 
-            MenuWardhop = MenuHome.AddSubMenu(new Menu("Wardhop", "Wardhop"));
+            MenuWardhop = MenuHome.Add(new Menu("Wardhop", "Wardhop"));
             {
-                MenuWardhop.AddItem(new MenuItem("Wardhop", "Wardhop"))
-                    .SetValue(new KeyBind('Z', KeyBindType.Press));
+                MenuWardhop.Add(new MenuKeyBind("Wardhop", "Wardhop", Keys.Z, KeyBindType.Press));
                 // TODO: Wardhop menu
             }
 
-            MenuDrawings = MenuHome.AddSubMenu(new Menu("Drawings", "Drawings"));
+            MenuDrawings = MenuHome.Add(new Menu("Drawings", "Drawings"));
             {
-                MenuDrawings.AddItem(new MenuItem("DrawQ", "Draw Q"))
-                    .SetValue(new Circle(true, Color.DarkOliveGreen));
-                MenuDrawings.AddItem(new MenuItem("DrawE", "Draw E"))
-                    .SetValue(new Circle(false, Color.DarkOliveGreen));
-                MenuDrawings.AddItem(new MenuItem("DrawWardhop", "Draw Wardhop Range"))
-                    .SetValue(new Circle(true, Color.DarkOliveGreen));
+                MenuDrawings.Add(new MenuColor("DrawQ", "Draw Q", SharpDX.Color.LightCyan));
+                MenuDrawings.Add(new MenuColor("DrawE", "Draw E", SharpDX.Color.DarkOliveGreen));
+                MenuDrawings.Add(new MenuColor("DrawWardhop", "Draw Wardhop Range", SharpDX.Color.ForestGreen));
                 // TODO: Drawings menu
             }
-
-            //MenuDebug = MenuHome.AddSubMenu(new Menu("Debug", "Debug"));
-            //{
-            //    MenuDebug.AddItem(new MenuItem("spamMoo", "Spam Moo")).SetValue(new KeyBind('T', KeyBindType.Press));
-            //}
-
-            MenuHome.AddToMainMenu();
+            MenuHome.Add(new MenuSeparator("Version", "Version: " + Globals.version));
+            MenuHome.Add(new MenuSeparator("Credits", "Made By Miku"));
+            MenuHome.Attach();
         }
     }
 }

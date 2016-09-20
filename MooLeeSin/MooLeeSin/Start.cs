@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LeagueSharp;
-using LeagueSharp.Common;
+using LeagueSharp.SDK;
 namespace MooLeeSin
 {
     class Start
     {
         static void Main(string[] args)
         {
-            
-            CustomEvents.Game.OnGameLoad += OnGameLoad;
+            Bootstrap.Init(); 
+            Events.OnLoad += OnGameLoad;
         }
 
-        private static void OnGameLoad(EventArgs args)
+        private static void OnGameLoad(object sender, EventArgs args)
         {
             if (ObjectManager.Player.ChampionName != "LeeSin") return;
             MenuConfig.init();

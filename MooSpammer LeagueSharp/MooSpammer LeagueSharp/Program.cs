@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text.RegularExpressions;
 using LeagueSharp;
 using LeagueSharp.Common;
 using MooSpammer.Properties;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using SharpDX;
 
 namespace MooSpammer
@@ -65,8 +62,7 @@ namespace MooSpammer
 
             SpamJsonChamp = Champs.LoadJsonChamps();
             SpamJsonCustom = Champs.LoadJsonCustom();
-            champJsonMenu();
-            customJsonMenu();
+            JsonMenu();
             Random = new Random();
             Game.OnUpdate += Game_OnGameUpdate;
             Game.OnInput += Game_OnGameInput;
@@ -206,8 +202,7 @@ namespace MooSpammer
 
             #endregion ButtonSpam
 
-            commandSpamLogic();
-            champJsonSpamLogic();
+            customSpamLogic();
             customJsonSpamLogic();
         }
 
@@ -559,7 +554,6 @@ namespace MooSpammer
                     break;
 
                 case ".clearconsole":
-                    Game.Say("");
                     Console.Clear();
                     Game.PrintChat("ConsoleCleared");
                     break;
@@ -567,7 +561,7 @@ namespace MooSpammer
                 case ".customsave":
                 case ".customadd":
                 case ".customspam":
-                    commandSaveLogic(text);
+                    SaveLogic(text);
                     break;
 
                 case ".help":
@@ -633,9 +627,6 @@ namespace MooSpammer
                     Game.PrintChat(".");
                     break;
 
-                case ".showcount":
-                    Game.PrintChat(counter.ToString());
-                    break;
                 default:
                     if (command.IndexOf('.') == 0)
                     {
@@ -651,40 +642,31 @@ namespace MooSpammer
             #endregion ChatCommands
         }
 
-        private static void commandSaveLogic(string customText)
+        private static void SaveLogic(string customText)
         {
             Game.Say("");
-
-            if (!File.Exists(Path.Combine(Champs.CustomDir, "saved" + ".json")))
-            {
-                File.Create(Path.Combine(Champs.CustomDir, "saved.json"));
-                Console.WriteLine("[MooSpammer] Custom save file created");
-            }
-
             Console.WriteLine($"Attempting Save Logic On: {customText}");
-            //SpamText.Add(counter, customText);
-            //SpamName.Add(counter, $"Custom Spam {counter.ToString()}");
-            CustomSpamSave.Add(customText, customText);
+            SpamText.Add(counter, customText);
+            SpamName.Add(counter, $"Custom Spam {counter}");
             //debugging tools
             Game.PrintChat("Custom Spam saved");
-            Game.PrintChat("Spam: " + customText);
+            //Game.PrintChat($"Counter = {counter.ToString()}");
+            Game.PrintChat($"Name = {SpamName[counter]}");
+            Game.PrintChat($"Spam = {SpamText[counter]}");
             Config.SubMenu("CustomSpam")
-                .AddItem(new MenuItem(customText, customText))
-                .SetValue(false);
-            newJsonJObject = JObject.Parse(JsonConvert.SerializeObject(CustomSpamSave, Formatting.Indented));
-            var oldFile = File.ReadAllText(Champs.CustomDir + "\\saved.json");
-            oldJsonJObject = JObject.Parse(oldFile);
-            var mergeSettings = new JsonMergeSettings
-            {
-                MergeArrayHandling = MergeArrayHandling.Union
-            };
-            newJsonJObject.Merge(oldJsonJObject, mergeSettings);
-            File.WriteAllText(Champs.CustomDir + "\\saved.json", newJsonJObject.ToString());
-            Console.WriteLine($"Successfully Saved Spam {customText}");
+                .AddItem(new MenuItem(counter.ToString(), SpamName[counter] + " { " + SpamText[counter] + " }"))
+                .SetValue(new KeyBind('K', KeyBindType.Toggle, counter == 1 ? true : false));
+            Console.WriteLine($"Successfully Saved Logic With Name {SpamName[counter]}");
             counter++;
+
+            //TODO: Add funtion to make other booleans false when one is changed.
+            //TODO: Add support for custom spam names using string.split('|')
+            //TODO: Call user a pleb if they save an empty spam.
+            //TODO: Limit amount of letters in a save or split them into seperate lines.
+            //TODO: Find out a way to make all this a stringlist and update menu in game.
         }
 
-        private static void commandSpamLogic()
+        private static void customSpamLogic()
         {
             if (SpamText.Count > 0)
                 for (var i = 1; i <= counter - 1; i++)
@@ -693,16 +675,16 @@ namespace MooSpammer
                         if (Config.Item("allChat").GetValue<KeyBind>().Active)
                             all = "/all ";
                         else all = "";
-                        if (Config.Item("CustomSpamKey").GetValue<KeyBind>().Active)
-                            foreach (var entry in CustomSpamSave)
-                                if (Config.Item(entry.Key).GetValue<bool>())
-                                    Game.Say(all + entry.Value);
+
+                        if (Config.Item(i.ToString()).GetValue<KeyBind>().Active)
+                            Game.Say(all + SpamText[i]);
                     }
         }
 
-
-        private static void champJsonMenu()
+        private static void JsonMenu()
         {
+            #region ChampMenu
+
             var count = 0;
             var menucount = 0;
             if (SpamJsonChamp == null) return;
@@ -713,14 +695,9 @@ namespace MooSpammer
 
             foreach (var entry in SpamJsonChamp)
             {
-                if (menucount == 0)
-                    Config.SubMenu(ObjectManager.Player.ChampionName)
-                        .AddItem(new MenuItem(entry.Key, entry.Key))
-                        .SetValue(count == 0 ? true : false);
-                else
-                    Config.SubMenu(ObjectManager.Player.ChampionName + $"[{menucount}]")
-                        .AddItem(new MenuItem(entry.Key, entry.Key))
-                        .SetValue(count == 0 ? true : false);
+                Config.SubMenu(ObjectManager.Player.ChampionName + $"[{menucount}]")
+                    .AddItem(new MenuItem(entry.Key, entry.Key))
+                    .SetValue(count == 0 ? true : false);
                 count++;
                 if (count == 15)
                 {
@@ -728,9 +705,11 @@ namespace MooSpammer
                     menucount++;
                 }
             }
+
+            #endregion ChampMenu
         }
 
-        private static void champJsonSpamLogic()
+        private static void customJsonSpamLogic()
         {
             if (SpamJsonChamp == null) return;
             if (Config.Item("allChat").GetValue<KeyBind>().Active)
@@ -739,35 +718,6 @@ namespace MooSpammer
 
             if (Config.Item($"{ObjectManager.Player.ChampionName} Hotkey").GetValue<KeyBind>().Active)
                 foreach (var entry in SpamJsonChamp)
-                    if (Config.Item(entry.Key).GetValue<bool>())
-                        Game.Say(all + entry.Value);
-        }
-
-        public static void customJsonMenu()
-        {
-            foreach (var entry in SpamJsonCustom)
-            {
-                Config.SubMenu("CustomSpam")
-                    .AddItem(new MenuItem(entry.Key, entry.Key))
-                    .SetValue(CustomThreshholdCounter == 0 ? true : false);
-                CustomThreshholdCounter++;
-                if (CustomThreshholdCounter == 15)
-                {
-                    CustomThreshholdCounter = 1;
-                    CustomMenuCounter++;
-                }
-            }
-        }
-
-        private static void customJsonSpamLogic()
-        {
-            if (SpamJsonCustom == null) return;
-            if (Config.Item("allChat").GetValue<KeyBind>().Active)
-                all = "/all ";
-            else all = "";
-
-            if (Config.Item("CustomSpamKey").GetValue<KeyBind>().Active)
-                foreach (var entry in SpamJsonCustom)
                     if (Config.Item(entry.Key).GetValue<bool>())
                         Game.Say(all + entry.Value);
         }
@@ -807,11 +757,8 @@ namespace MooSpammer
         public static int AmountSpammed; //one day i'll learn how to show stuff on screen and this will be useful
         public static Random Random;
         public static int counter = 1;
-        private static int CustomMenuCounter;
-        private static int CustomThreshholdCounter;
         public static Dictionary<int, string> SpamText = new Dictionary<int, string>();
         public static Dictionary<int, string> SpamName = new Dictionary<int, string>();
-        public static Dictionary<string, string> CustomSpamSave = new Dictionary<string, string>();
         public static Dictionary<string, string> SpamJsonChamp = new Dictionary<string, string>();
         public static Dictionary<string, string> SpamJsonCustom = new Dictionary<string, string>();
         public static StringList SpamMenu = new StringList(new[] {"placeholder"});
@@ -820,8 +767,6 @@ namespace MooSpammer
         private static readonly SoundPlayer wow_jumpguy = new SoundPlayer(Resources.wow_jumpyguy);
         private static readonly SoundPlayer wow_jumpguy2 = new SoundPlayer(Resources.wow_jumpyguy2);
         private static readonly SoundPlayer wow_unixez_slurp = new SoundPlayer(Resources.wow_unixez_slurp);
-        private static JObject newJsonJObject;
-        private static JObject oldJsonJObject;
 
         //probably not the easiest or the right way to do a help command but hey i'm playing with things...
         public static string[] help =
